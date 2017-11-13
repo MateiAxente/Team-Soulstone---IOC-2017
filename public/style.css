@@ -1,0 +1,42 @@
+.navbar {
+	margin-bottom: 0px;
+}
+
+.user-info {
+	border-right: 2px solid #000;
+	min-height: 770px;
+	padding: 20px 0px;
+}
+
+.profile-picture {
+	width: 200px;
+	height: 200px;
+	display: block;
+	margin: auto;
+}
+
+.profile-username {
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 40px 0px;
+}
+
+.profile-edit {
+	font-size: 12px;
+	padding-top: 20px;
+}
+
+.profile-option {
+	text-align: center;
+	cursor: pointer;
+	margin: 10px 0px;
+}
+
+@media(max-width: 768px) {
+	.user-info {
+		border-right: none;
+		border-bottom: 2px solid #000;
+		min-height: auto;
+	}
+}
