@@ -1,0 +1,49 @@
+doctype html
+html
+	include head.pug
+	body
+		nav.navbar.navbar-inverse
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') Soulstone
+				#myNavbar.collapse.navbar-collapse
+					ul.nav.navbar-nav
+						li
+							a(href='#') Cursuri
+						li
+							a(href='#') Profesori
+						li
+							a(href='#') Subiecte Examen
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='#')
+								span.glyphicon.glyphicon-wrench
+								|  Setari
+						li
+							a(href='#')
+								span.glyphicon.glyphicon-file
+								|  Documente
+						li
+							a(href='#')
+								span.glyphicon.glyphicon-log-in
+								|  Logout
+		.container-fluid.body-container
+			.row
+				.col-lg-2.col-md-3.col-sm-4.col-xs-12.user-info
+					img.profile-picture(src='http://cheb-room.ru/uploads/cheb/2016/11/w9RC4W-QqXw-200x200.jpg', alt='Profile image')
+					.profile-username
+						| Ion Ion
+						br
+						a.profile-edit(href='#') Edit profile
+					.profile-option
+						span.glyphicon.glyphicon-paperclip
+						|  Upload Documents
+					.profile-option
+						span.glyphicon.glyphicon-star
+						|  Rate Users
+				.col-lg-10.col-md-9.col-sm-8.col-xs-12.page-info
+					|

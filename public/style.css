@@ -33,6 +33,15 @@
 	margin: 10px 0px;
 }
 
+.doc-form-title {
+	text-align: center;
+}
+
+.doc-upload-button {
+	display: block;
+	margin: auto;
+}
+
 @media(max-width: 768px) {
 	.user-info {
 		border-right: none;

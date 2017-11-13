@@ -1,0 +1,20 @@
+doctype html
+html
+	include head.pug
+	include template.pug
+		.row
+			.col-lg-3.col-md-3.col-sm-3.col-xs-3
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6.doc-form
+				h1.doc-form-title Upload Document
+				form(method='POST' action='/upload-document')
+					div.form-group
+						label(for='document') Document:
+						input#document.form-control(type='file', placeholder='document' name='document')
+					div.form-group
+						label(for='title') Title:
+						input#title.form-control(type='text', placeholder='title' name='title')
+					div.form-group
+						label(for='description') Descriere:
+						input#description.form-control(type='text' placeholder='description' name='description')
+					button.btn.btn-primary.doc-upload-button(type='submit') Upload Document
+			.col-lg-3.col-md-3.col-sm-3.col-xs-3

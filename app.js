@@ -45,8 +45,8 @@ process.on('exit', function(){
     })
 })
 
-app.set('view engine', 'html')
-//app.set('view engine', 'pug')
+//app.set('view engine', 'html')
+app.set('view engine', 'pug')
 
 app.use( express.static('public') )
 
@@ -58,7 +58,8 @@ app.use( bodyParser.urlencoded( { extended: true } ) )
 app.use( bodyParser.json() )
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/views/template.html')
+  //res.sendFile(__dirname + '/views/template.html')
+  res.render("upload_document")
 })
 
 app.listen( 8098, function(){

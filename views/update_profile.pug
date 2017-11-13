@@ -1,0 +1,29 @@
+doctype html
+html
+	include head.pug
+	include template.pug
+		.row
+			.col-lg-3.col-md-3.col-sm-3.col-xs-3
+			.col-lg-6.col-md-6.col-sm-6.col-xs-6.doc-form
+				h1.doc-form-title Update Profile
+				form(method='POST' action='/update-profile')
+					div.form-group
+						label(for='profile-picture') Profile Picture:
+						input#profile-picture.form-control(type='file', placeholder='profile picture' name='profile-picture')
+					div.form-group
+						label(for='name') Nume:
+						input#name.form-control(type='text', placeholder='first and last' name='name')
+					div.form-group
+						label(for='email') Email:
+						input#email.form-control(type='email', placeholder='name@email.com' name='email')
+					div.form-group
+						label(for='faculty') Facultate:
+						input#favoriteBook.form-control(type='text', placeholder='facultate' name='faculty')
+					div.form-group
+						label(for='spec') Specializare:
+						input#spec.form-control(type='text' placeholder='C4/CTI/IS' name='spec')
+					div.form-group
+						label(for='group') Grupa:
+						input#group.form-control(type='text' placeholder='335CC' name='group')
+					button.btn.btn-primary.doc-upload-button(type='submit') Update Profile
+			.col-lg-3.col-md-3.col-sm-3.col-xs-3
