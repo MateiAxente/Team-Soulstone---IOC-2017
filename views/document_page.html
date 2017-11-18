@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<title>IOC - Soulstone</title>
+
+		<style type="text/css">
+			table {
+				margin-top: 50px;
+				margin-bottom: 50px;
+				border: 3px solid;
+				border-collapse: collapse;
+			}
+
+			th, td {
+				border: 1px solid gray;
+				padding-left: 15px;
+				padding-right: 15px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+
+			textarea {
+				resize: none;
+				border: 3px solid;
+				margin-top: 20px;
+				margin-bottom: 20px;
+			}
+
+			.comments {
+				overflow: auto;
+				margin-top: 20px;
+				height: 150px;
+ 		 		list-style-type: none;
+ 		 		border: 3px solid;
+ 		 		border-collapse: collapse;
+ 		 		padding: 0;
+ 		 		margin-left: 0;
+ 		 		margin-right: 0;
+			}
+
+			.comments li {
+				border: 1px solid gray;
+				padding: 5px;
+			}
+
+			.comments li h5 {
+				margin: 0;
+			}
+
+			.comments li .comm-content {
+				margin: 0;
+			}
+
+			.comments li .comm-time {
+				font-size: 10px;
+				margin-bottom: 1px;
+			}
+
+			.comments li:nth-child(even){
+			  	background:#ddd;
+			}
+
+			.fa {
+			    font-size: 25px;
+			    padding-right: 10px;
+			}
+
+			.checked {
+			    color: orange;
+			}
+		</style>
+	</head>
+
+	<body>
+		<nav class="navbar navbar-inverse">
+		 	<div class="container-fluid">
+		    	<div class="navbar-header">
+		      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>                        
+		      		</button>
+		      		<a class="navbar-brand" href="#">Soulstone</a>
+		    	</div>
+		    	<div class="collapse navbar-collapse" id="myNavbar">
+		      		<ul class="nav navbar-nav">
+		        		<li><a href="#">Cursuri</a></li>
+		        		<li><a href="#">Profesori</a></li>
+		        		<li><a href="#">Subiecte Examen</a></li>
+		      		</ul>
+		      		<ul class="nav navbar-nav navbar-right">
+		        		<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Setari</a></li>
+		        		<li><a href="#"><span class="glyphicon glyphicon-file"></span> Documente</a></li>
+		        		<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+		      		</ul>
+		    	</div>
+		  	</div>
+		</nav>
+
+		<div class = "container-fluid body-container">
+			<div class = "row">
+				<div class = "col-lg-2 col-md-3 col-sm-4 col-xs-12 user-info">
+					<img src = "http://cheb-room.ru/uploads/cheb/2016/11/w9RC4W-QqXw-200x200.jpg" alt = "Profile image" class = "profile-picture" />
+					<div class = "profile-username">
+						Ion Ion<br>
+						<a href = "#" class = "profile-edit">Edit profile</a>
+					</div>
+					<div class = "profile-option">
+						<span class = "glyphicon glyphicon-paperclip"></span> Upload Documents
+					</div>
+					<div class = "profile-option">
+						<span class = "glyphicon glyphicon-star"></span> Rate Users
+					</div>
+				</div>
+				<div class = "col-lg-10 col-md-9 col-sm-8 col-xs-12 page-info">
+					<div class="row">
+						<img src="http://pngimages.net/sites/default/files/document-png-image-54169.png" class="col-xs-3 document-image"/>
+						<div class="col-xs-1 divider"></div>
+						<div class="col-xs-4">
+							<h1>
+								Titlu document
+							</h1>
+							<table width="100%">
+								<tr style="background-color: #ddd;">
+									<th>Size</th>
+									<th>Uploader</th>
+									<th>Type</th>
+								</tr>
+								<tr>
+									<td>40 MB</td>
+									<td>Ion Ion</td>
+									<td>Subiect examen</td>
+								</tr>
+							</table>
+							<a><h4><u>Download this document</u></h4></a>
+						</div>
+					</div>
+
+					<div class="row">
+						<textarea class="col-xs-8 doc-descr" disabled rows="5">
+							ASSSSSSSSSsssdoshgdfubbbbbbbbbbbbbbbbbbbshreiharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+						</textarea>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-3 rating" style="background: #ddd; border: 3px solid;">
+							<h4>Rate this document:</h4>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star checked"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<p>3.1 average based on 254 reviews.</p>
+						</div>
+					</div>
+
+					<div class="row">
+						<ul class="col-xs-8 comments">
+							<li>
+								<h5><b>Ion Ion</b></h5>
+								<p class="comm-content">Frumos subiectul asta, thanks uploader.</p>
+								<p class="comm-time">Posted at 23:59, 10/02/2018</p>
+							</li>
+							<li>
+								<h5><b>Dorel #1</b></h5>
+								<p class="comm-content">Boss de boss<br>Haters gonna hate<br>H8r Sk8r</p>
+								<p class="comm-time">Posted at 23:59, 10/02/2018</p>
+							</li>
+							<li>
+								<h5><b>Ion Ion</b></h5>
+								<p class="comm-content">Frumos subiectul asta, thanks uploader.</p>
+								<p class="comm-time">Posted at 23:59, 10/02/2018</p>
+							</li>
+							<li>
+								<h5><b>Ion Ion</b></h5>
+								<p class="comm-content">Frumos subiectul asta, thanks uploader.</p>
+								<p class="comm-time">Posted at 23:59, 10/02/2018</p>
+							</li>
+							<li>
+								<h5><b>Ion Ion</b></h5>
+								<p class="comm-content">Frumos subiectul asta, thanks uploader.</p>
+								<p class="comm-time">Posted at 23:59, 10/02/2018</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
