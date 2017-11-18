@@ -49,3 +49,37 @@
 		min-height: auto;
 	}
 }
+
+.LoginHeader {
+	text-align: center;
+	background-color: darkblue;
+	color: white;
+	margin-bottom: 10px;
+}
+
+.containerClass {
+	border: solid;
+	word-wrap: break-word;
+	padding: 10px 20px;
+	min-height: 700px;
+	margin-top: 20px;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	border: solid;
+}
+
+button {
+    border: solid;
+    cursor: pointer;
+    width: 100%;
+	position: relative;
+	top: 20px;
+}
+
+@media(max-width: 992px) {
+	.containerClass {
+		min-height: auto;
+	}
+}
