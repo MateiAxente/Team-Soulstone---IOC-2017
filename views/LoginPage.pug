@@ -1,0 +1,40 @@
+doctype html
+html
+	script.
+		function registerButton() {
+			//send form data to back-end?
+		}
+		function loginButton() {
+			//send form data to back-end?
+		}
+	body
+		h1.LoginHeader
+			| Welcome to ACS Peek
+			.container-fluid
+				.row
+					.col-lg-6.col-md-6.col-sm-12.col-xs-12
+						#firstColumn.containerClass
+							| Text static in loc de text dinamic.
+					#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+						.containerClass
+							form#registerForm
+								label
+									b Nume utilizator
+								input(type='text', required='')
+								label
+									b Parola
+								input(type='text', required='')
+								label
+									b Confirma parola
+								input(type='text', required='')
+								button(type='submit', onclick='registerButton()') Inscriere
+					#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+						.containerClass
+							form#loginForm
+								label
+									b Nume utilizator
+								input(type='text', required='')
+								label
+									b Parola
+								input(type='text', required='')
+								button(type='submit', onclick='loginButton()') Conectare

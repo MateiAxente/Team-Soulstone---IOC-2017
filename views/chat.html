@@ -1,304 +1,108 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script>
+	$(window).resize(function() {
+		var path = $(this);
+		var contW = path.width();
+		if(contW >= 751){
+			document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
+		}else{
+			document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
+		}
+	});
+	$(document).ready(function() {
+		$('.dropdown').on('show.bs.dropdown', function(e){
+			$(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+		});
+		$('.dropdown').on('hide.bs.dropdown', function(e){
+			$(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
+		});
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			var elem = document.getElementById("sidebar-wrapper");
+			right = window.getComputedStyle(elem,null).getPropertyValue("right");
+			if(right == "200px"){
+				document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
+			}
+			else if(right == "-200px"){
+				document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
+			}
+		});
+	});
 
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	$(function(){
+		$(".panel.panel-chat > .panel-heading > .chatMinimize").click(function(){
+			if($(this).parent().parent().hasClass('mini'))
+			{
+				$(this).parent().parent().removeClass('mini').addClass('normal');
+				$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
+				$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
+			}
+			else
+			{
+				$(this).parent().parent().removeClass('normal').addClass('mini');
+				$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
+				$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
 
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<title>IOC - Soulstone</title>
-        <script>
-          $(window).resize(function() {
-            var path = $(this);
-            var contW = path.width();
-            if(contW >= 751){
-              document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
-            }else{
-              document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
-            }
-          });
-          $(document).ready(function() {
-            $('.dropdown').on('show.bs.dropdown', function(e){
-                $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-            });
-            $('.dropdown').on('hide.bs.dropdown', function(e){
-              $(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
-            });
-            $("#menu-toggle").click(function(e) {
-              e.preventDefault();
-              var elem = document.getElementById("sidebar-wrapper");
-              right = window.getComputedStyle(elem,null).getPropertyValue("right");
-              if(right == "200px"){
-                document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
-              }
-              else if(right == "-200px"){
-                document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
-              }
-            });
-          });
+				setTimeout(function() {
+					$('.panel.panel-chat > .panel-body').hide();
+					$('.panel.panel-chat > .panel-footer').hide();
+				}, 500);
+			}
 
-      $(function(){
-        $(".panel.panel-chat > .panel-heading > .chatMinimize").click(function(){
-            if($(this).parent().parent().hasClass('mini'))
-            {
-                $(this).parent().parent().removeClass('mini').addClass('normal');
-                $('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-                $('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-            }
-            else
-            {
-                $(this).parent().parent().removeClass('normal').addClass('mini');
-                $('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-                $('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
+		});
+		$(".panel.panel-chat > .panel-heading > .chatClose").click(function(){
+			console.log($(this).parent().parent());
+				$(this).parent().parent().hide();
+		});
 
-                setTimeout(function() {
-                    $('.panel.panel-chat > .panel-body').hide();
-                    $('.panel.panel-chat > .panel-footer').hide();
-                }, 500);
-            }
+		$('a[href="#item1"]').on('click', function() {
+			if($('.panel').is(":visible")){
+				if($('.panel.panel-chat').hasClass('mini')) {
+					$('.panel.panel-chat').removeClass('mini').addClass('normal');
+								$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
+								$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
+					}
+					else {
+						$('.panel.panel-chat').removeClass('normal').addClass('mini');
+						$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
+						$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
 
-            });
-            $(".panel.panel-chat > .panel-heading > .chatClose").click(function(){
-              console.log($(this).parent().parent());
-                $(this).parent().parent().hide();
-            });
-
-            $('a[href="#item1"]').on('click', function() {
-              if($('.panel').is(":visible")){
-                if($('.panel.panel-chat').hasClass('mini')) {
-                  $('.panel.panel-chat').removeClass('mini').addClass('normal');
-                      $('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-                      $('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-                }
-                else {
-                  $('.panel.panel-chat').removeClass('normal').addClass('mini');
-                  $('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-                  $('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
-
-                  setTimeout(function() {
-                      $('.panel.panel-chat > .panel-body').hide();
-                      $('.panel.panel-chat > .panel-footer').hide();
-                  }, 500);
-                }
-              }
-              else {
-                $('.panel').show();
-              }
-            })
-        })
-        </script>
-    		<style type="text/css">
-    			#sidebar-wrapper {
-              top: 52px;
-              right: -200px;
-              width: 200px;
-              background-color: #5677fc;
-              color: black;
-              position: fixed;
-              bottom: 0px;
-              background-color:white;
-              overflow-y:scroll;
-              overflow-x:hidden;
-              border-left: 1px solid rgba(0,0,0,0.25);
-            }
-            .sidebar-nav {
-              position: absolute;
-              top: 0;
-              margin: 0;
-              padding: 0;
-              width: 200px;
-              list-style: none;
-            }
-            .sidebar-nav li {
-              text-indent: 20px;
-              line-height: 50px;
-            }
-            .sidebar-nav li a {
-              color: black;
-              display: block;
-              text-decoration: none;
-              padding-left: 5px;
-            }
-            .sidebar-nav li a:hover {
-              background: rgba(0,0,0,0.25);
-              color: white;
-              text-decoration: none;
-            }
-            .sidebar-nav li a:active, .sidebar-nav li a:focus {
-              text-decoration: none;
-            }
-            #sidebar-wrapper.sidebar-toggle {
-              transition: all 0.3s ease-out;
-              margin-right: -200px;
-            }
-            @media (min-width: 768px) {
-              #sidebar-wrapper.sidebar-toggle {
-                transition: 0s;
-                right: 200px;
-              }
-            }
-            .friend {
-              background-color:transparent;
-            }
-            {
-                -webkit-border-radius: 0px  !important;
-                -moz-border-radius: 0px  !important;
-                border-radius: 0px !important;
-            }
-            htlm, body
-            {
-                padding: 0;
-                margin: 0;
-                position: relative;
-            }
-            .clearFix
-            {
-                clear:both;
-            }
-            .panel.panel-chat
-            {
-                position: fixed;
-                bottom:-20px;
-                right:200px;
-                max-width: 300px;
-                box-shadow: none;
-                -webkit-box-shadow: none;
-            }
-            .panel.panel-chat *
-            {
-                background: none;
-                border: none;
-            }
-            .panel.panel-chat .panel-heading
-            {
-                background: #4b67a8;
-                border: 1px solid #2e4588;
-                color:#FFF;
-            }
-            .panel.panel-chat .panel-heading a:nth-of-type(1)
-            {
-                text-decoration: none;
-                width: 200px;
-                color:#FFF;
-                font-weight: bold;
-                float:left;
-            }
-            .panel.panel-chat .panel-heading a:nth-of-type(2)
-            {
-                text-decoration: none;
-                max-width: 11px;
-                width: 11px;
-                color:#FFF;
-                float:right;
-            }
-            .panel.panel-chat .panel-body
-            {
-                display: block;
-                padding: 0;
-                margin: 0;
-                max-height: 200px;
-                height: 200px;
-                border-left: 1px solid #b2b2b2;
-                border-right: 1px solid #b2b2b2;
-                background: #EDEFF4;
-                overflow: auto;
-            }
-            .panel.panel-chat .panel-body::-webkit-scrollbar {
-                 display: none;
-             }
-            .panel.panel-chat .panel-body .messageMe
-            {
-                border-bottom:1px dotted #b2b2b2;
-            }
-            .panel.panel-chat .panel-body .messageMe img
-             {
-                 float:left;
-                 max-width: 50px;
-                 max-height: 50px;
-             }
-            .panel.panel-chat .panel-body .messageMe span
-            {
-                display: block;
-                float:left;
-                padding: 5px;
-                background: #FFF;
-                min-height: 50px;
-                max-width: 280px;
-                height: 50px;
-                width: 250px;
-                word-break: break-all;
-            }
-            .panel.panel-chat .panel-body .messageHer
-            {
-                border-bottom:1px dotted #b2b2b2;
-            }
-            .panel.panel-chat .panel-body .messageHer img
-            {
-                float:right;
-                max-width: 50px;
-                max-height: 50px;
-            }
-            .panel.panel-chat .panel-body .messageHer span
-            {
-                display: block;
-                float:right;
-                padding: 5px;
-                background: #FFF;
-                min-height: 50px;
-                max-width: 280px;
-                height: 50px;
-                width: 280px;
-                word-break: break-all;
-            }
-            .panel.panel-chat .panel-footer
-            {
-                padding: 0;
-                margin: 0;
-                border: 1px solid #b2b2b2;
-                max-height: 75px;
-                height: 75px;
-            }
-            .panel.panel-chat .panel-footer textarea
-            {
-                margin-bottom: -5px;
-                resize: none;
-                width: 100%;
-                height: 100%;
-            }
-		</style>
-
-	</head>
+						setTimeout(function() {
+								$('.panel.panel-chat > .panel-body').hide();
+								$('.panel.panel-chat > .panel-footer').hide();
+						}, 500);
+					}
+				}
+				else {
+					$('.panel').show();
+				}
+			})
+	})
+	</script>
 
 	<body>
 		<nav class="navbar navbar-inverse">
-		 	<div class="container-fluid">
-		    	<div class="navbar-header">
-		      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>                        
-		      		</button>
-		      		<a class="navbar-brand" href="#">Soulstone</a>
-		    	</div>
-		    	<div class="collapse navbar-collapse" id="myNavbar">
-		      		<ul class="nav navbar-nav">
-		        		<li><a href="#">Cursuri</a></li>
-		        		<li><a href="#">Profesori</a></li>
-		        		<li><a href="#">Subiecte Examen</a></li>
-		      		</ul>
-		      		<ul class="nav navbar-nav navbar-right">
-		        		<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Setari</a></li>
-		        		<li><a href="#"><span class="glyphicon glyphicon-file"></span> Documente</a></li>
-		        		<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-		      		</ul>
-		    	</div>
-		  	</div>
+			<div class="container-fluid">
+					<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>                        
+							</button>
+							<a class="navbar-brand" href="#">Soulstone</a>
+					</div>
+					<div class="collapse navbar-collapse" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li><a href="#">Cursuri</a></li>
+								<li><a href="#">Profesori</a></li>
+								<li><a href="#">Subiecte Examen</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Setari</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-file"></span> Documente</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+							</ul>
+					</div>
+				</div>
 		</nav>
 
 		<div class = "container-fluid body-container">
@@ -326,76 +130,76 @@
 				</div>
 				<div id="sidebar-wrapper" class="sidebar-toggle">
 					<ul class="sidebar-nav">
-				    	<li>
-				      		<a href="#item1">
-				      			<table>
+							<li>
+									<a href="#item1">
+										<table>
 									<tr class="friend">
 										<td style="width: 20%"><img class="pic img-circle img-responsive" src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png"></td>
 										<td><h5>Name Surname</h5></td>
 									</tr>
-				                </table>
-				      		</a>
-				    	</li>
-				    	<li>
-				      		<a href="#item2">
-				      			<table>
+												</table>
+									</a>
+							</li>
+							<li>
+									<a href="#item2">
+										<table>
 									<tr class="friend">
 										<td style="width: 20%"><img class="pic img-circle img-responsive" src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png"></td>
 										<td><h5>Name Surname</h5></td>
 									</tr>
-				                </table>
-				      		</a>
-				    	</li>
-				    	
-				    	
-				      		
-		      			<table>
+												</table>
+									</a>
+							</li>
+							
+							
+									
+								<table>
 							<tr style="height:10000px;">
-             				</tr>
-		                </table>
-				      		
-				    	
+										</tr>
+										</table>
+									
+							
 
 
-				    	<li>
-				      		<a href="#item4">
-				      			<table>
+							<li>
+									<a href="#item4">
+										<table>
 									<tr class="friend">
 										<td style="width: 20%"><img class="pic img-circle img-responsive" src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png"></td>
 										<td><h5>Name Surname</h5></td>
 									</tr>
-				                </table>
-				      		</a>
-				    	</li>
+												</table>
+									</a>
+							</li>
 
-				  	</ul>
+						</ul>
 				</div>
-		  	</div>
+				</div>
 		</nav>
 		<div class="container">
 			<div class="row">
-		    	<div class="panel panel-chat">
-		        <div class="panel-heading">
-		            <a href="#" class="chatMinimize" onclick="return false"><span>Proiect IOC</span></a>
-		            <a href="#" class="chatClose" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a>
-		            <div class="clearFix"></div>
-		        </div>
-		        <div class="panel-body">
-		            <div class="messageMe">
-		                <img src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png" alt=""/>
-		                <span>bla</span>
-		                <div class="clearFix"></div>
-		            </div>
-		            <div class="messageHer">
-		                <img src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png" alt=""/>
-		                <span>bla back</span>
-		                <div class="clearFix"></div>
-		            </div>
-		        </div>
-		        <div class="panel-footer">
-		            <textarea name="textMessage" cols="0" rows="0"></textarea>
-		        </div>
-		    </div>
+					<div class="panel panel-chat">
+						<div class="panel-heading">
+								<a href="#" class="chatMinimize" onclick="return false"><span>Proiect IOC</span></a>
+								<a href="#" class="chatClose" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a>
+								<div class="clearFix"></div>
+						</div>
+						<div class="panel-body">
+								<div class="messageMe">
+										<img src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png" alt=""/>
+										<span>bla</span>
+										<div class="clearFix"></div>
+								</div>
+								<div class="messageHer">
+										<img src="http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png" alt=""/>
+										<span>bla back</span>
+										<div class="clearFix"></div>
+								</div>
+						</div>
+						<div class="panel-footer">
+								<textarea name="textMessage" cols="0" rows="0"></textarea>
+						</div>
+				</div>
 		</div>
 				</div>
 			</div>
