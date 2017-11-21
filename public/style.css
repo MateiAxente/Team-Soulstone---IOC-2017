@@ -35,11 +35,14 @@
 
 .doc-form-title {
 	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
 
 .doc-upload-button {
 	display: block;
 	margin: auto;
+	margin-bottom: 50px;
 }
 
 @media(max-width: 768px) {
@@ -47,5 +50,9 @@
 		border-right: none;
 		border-bottom: 2px solid #000;
 		min-height: auto;
+	}
+
+	.doc-form-title {
+		margin-top: 50px;
 	}
 }
