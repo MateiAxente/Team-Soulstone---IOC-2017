@@ -59,7 +59,8 @@ app.use( bodyParser.json() )
 
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/views/template.html')
-  res.render("upload_page")
+
+  res.render("chat")
 })
 
 app.listen( 8098, function(){
