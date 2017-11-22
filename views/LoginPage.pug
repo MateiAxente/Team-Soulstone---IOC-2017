@@ -11,31 +11,46 @@ html
 	body
 		h1.LoginHeader
 			| Welcome to ACS Peek
-			.container-fluid
-				.row
-					.col-lg-6.col-md-6.col-sm-12.col-xs-12
-						#firstColumn.containerClass
-							| Text static in loc de text dinamic.
-					#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
-						.containerClass
-							form#registerForm
-								label
-									b Nume utilizator
-								input(type='text', required='')
-								label
-									b Parola
-								input(type='text', required='')
-								label
-									b Confirma parola
-								input(type='text', required='')
-								button(type='submit', onclick='registerButton()') Inscriere
-					#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
-						.containerClass
-							form#loginForm
-								label
-									b Nume utilizator
-								input(type='text', required='')
-								label
-									b Parola
-								input(type='text', required='')
-								button(type='submit', onclick='loginButton()') Conectare
+		.container-fluid
+			.row
+				.col-lg-6.col-md-6.col-sm-12.col-xs-12
+					#firstColumn.containerClass
+						| Cine suntem? 
+						br
+						br
+						| Un grup de studenti din poli care vor sa incurajeze colaborarea studentilor pentru dobandirea a noi cunostinte si fixarea celor deja stiute.
+						br
+						br
+						| Cum ma pot alatura?
+						br
+						br
+						| Alegi un username, pui o parola pe masura si esti binevenit.
+						br
+						br
+						| Cum functioneaza?
+						br
+						br
+						| Cauti materiale si, dupa ce le folosesti, le dai o nota insotita eventual de un comentariu. Contribuie prin opinia ta si vei putea incarca propriile documente.
+				#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+					.containerClass
+						form#registerForm
+							label
+								b Nume utilizator
+							input(type='text', required='')
+							label
+								b Parola
+							input(type='text', required='')
+							label
+								b Confirma parola
+							input(type='text', required='')
+							button(type='submit', onclick='registerButton()') Inscriere
+				#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+					.containerClass
+						form#loginForm
+							label
+								b Nume utilizator
+							input(type='text', required='')
+							label
+								b Parola
+							input(type='text', required='')
+							button(type='submit', onclick='loginButton()') Conectare
