@@ -59,7 +59,7 @@ app.use( bodyParser.json() )
 
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/views/template.html')
-  res.render("LoginPage")
+  res.render("login_page")
 })
 
 app.get('/updateProfile', function(req, res) {
