@@ -75,9 +75,8 @@ app.get('/chat', function(req, res) {
 })
 
 app.post('/register', function(req, res) {
-  console.log("register")
   var email = req.body.email
-  var password = req.body.password
+  var password = req.body.pass
   var username = req.body.username
   knex.select('username', 'email', 'name', 'pass', 'profile_picture', 'description', 'group', 'spec', 'faculty').from('users').where('username', username).then(function(user) {
     if(user.length >= 1) {
@@ -91,7 +90,7 @@ app.post('/register', function(req, res) {
       } else {
         req.session.validation = 1
         var to_insert = {email:req.body.email, 
-          pass:req.body.password,
+          pass:req.body.pass,
           username:req.body.username,
           name: req.body.name,
           profile_picture: req.body.profile_picture,
@@ -115,6 +114,34 @@ app.post('/register', function(req, res) {
       }
     }
     if(req.session.validation == 0) {
+      res.redirect('/')
+    } else {
+      res.redirect('/mainPage')
+    }
+  })
+})
+
+app.post('/login', function(req, res) {
+  var password = req.body.pass
+  var username = req.body.username
+  knex.select('username', 'email', 'name', 'pass', 'profile_picture', 'description', 'group', 'spec', 'faculty').from('users').where({'username': username, 'pass': password}).then(function(user) {
+    if(user.length >= 1) {
+      console.log("Found user")
+      req.session.validation = 1
+
+      req.session.username = req.body.username
+      req.session.email = req.body.email
+      req.session.profile_picture = req.body.profile_picture
+      req.session.name = req.body.name
+      req.session.description = req.body.description
+      req.session.group = req.body.group
+      req.session.spec = req.body.spec
+      req.session.faculty = req.body.faculty
+    } else {
+      req.session.validation = 2
+      req.session.error = "No user with this credentials! Please reenter login informations."
+    }
+    if(req.session.validation == 2) {
       res.redirect('/')
     } else {
       res.redirect('/mainPage')

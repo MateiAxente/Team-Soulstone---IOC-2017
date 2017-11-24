@@ -54,11 +54,13 @@ html
 							button(type='submit') Inscriere
 				#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
 					.containerClass
-						form#loginForm
+						if validation == 2
+							.alert.alert-danger #{error}
+						form#loginForm(method="post" action="login")
 							label
 								b Username
-							input(type='text', required='required')
+							input(type='text', required='required', id="username", name="username")
 							label
 								b Parola
-							input(type='text', required='required')
-							button(type='submit', onclick='loginButton()') Conectare
+							input(type='password', required='required', id="pass", name="pass")
+							button(type='submit') Conectare
