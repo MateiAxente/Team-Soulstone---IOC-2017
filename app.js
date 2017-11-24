@@ -60,7 +60,19 @@ app.use( bodyParser.json() )
 app.get('/', function(req, res){
   //res.sendFile(__dirname + '/views/template.html')
 
-  res.render("chat")
+  res.render("login_page")
+})
+
+app.get('/updateProfile', function(req, res) {
+  res.render('update_profile')
+})
+
+app.get('/uploadDocument', function(req, res) {
+  res.render('upload_document')
+})
+
+app.get('/document', function(req, res) {
+  res.render('document_page')
 })
 
 app.listen( 8098, function(){
