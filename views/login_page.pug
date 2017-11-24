@@ -18,24 +18,47 @@ html
 						| Text static in loc de text dinamic.
 				#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
 					.containerClass
-						form#registerForm
+						if validation == 0
+							.alert.alert-danger #{error}
+						form#registerForm(method="post" action="/register")
 							label
-								b Nume utilizator
-							input(type='text', required='')
+								b Username*
+							input(type="text", required='required', id="username", name="username")
 							label
-								b Parola
-							input(type='text', required='')
+								b Email*
+							input(type="text", required="required", id="email", name="email")
 							label
-								b Confirma parola
-							input(type='text', required='')
-							button(type='submit', onclick='registerButton()') Inscriere
+								b Nume
+							input(type='text', id="name", name="name")
+							label
+								b Parola*
+							input(type='password', required='required', id="pass", name="pass")
+							label
+								b Confirma parola*
+							input(type='password', required='required', id="new_pass", name="new_pass")
+							label
+								b Profile Picture URL
+							input(type="text", id="profile_picture", name="profile_picture")
+							label
+								b Descriere
+							input(type="text", id="description", name="description")
+							label
+								b Facultate*
+							input(type="text", required="required", id="faculty", name="faculty") 
+							label
+								b Specializare*
+							input(type="text", required="required", id="spec", name="spec")
+							label
+								b Grupa*
+							input(type="text", required="required", id="group", name="group")
+							button(type='submit') Inscriere
 				#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
 					.containerClass
 						form#loginForm
 							label
-								b Nume utilizator
-							input(type='text', required='')
+								b Username
+							input(type='text', required='required')
 							label
 								b Parola
-							input(type='text', required='')
+							input(type='text', required='required')
 							button(type='submit', onclick='loginButton()') Conectare

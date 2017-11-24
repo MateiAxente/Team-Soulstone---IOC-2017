@@ -340,6 +340,7 @@ htlm, body
 	margin: 50px;
   margin-top: 20px;
 	margin-bottom: 20px;
+  padding-left: 0px;
 }
 
 .secondary-title {
