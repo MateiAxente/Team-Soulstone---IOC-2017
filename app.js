@@ -74,6 +74,10 @@ app.get('/document', function(req, res) {
   res.render('document_page')
 })
 
+app.get('/chat', function(req, res) {
+  res.render('chat')
+})
+
 app.listen( 8098, function(){
   console.log("Started landing page");
 })
