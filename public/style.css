@@ -271,9 +271,24 @@ htlm, body
     height: 100%;
 }
 
+.doc_page {
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+
+.doc_name {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.doc_download {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 .file-details {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 	border: 3px solid;
 	border-collapse: collapse;
 }
@@ -289,20 +304,20 @@ htlm, body
 .doc-descr {
 	resize: none;
 	border: 3px solid;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .comments {
 	overflow: auto;
-	margin-top: 20px;
+	padding-top: 20px;
 	height: 150px;
- 		list-style-type: none;
- 		border: 3px solid;
- 		border-collapse: collapse;
- 		padding: 0;
- 		margin-left: 0;
- 		margin-right: 0;
+	list-style-type: none;
+	border: 3px solid;
+	border-collapse: collapse;
+	padding: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 .comments li {
@@ -311,16 +326,16 @@ htlm, body
 }
 
 .comments li h5 {
-	margin: 0;
+	padding: 0;
 }
 
 .comments li .comm-content {
-	margin: 0;
+	padding: 0;
 }
 
 .comments li .comm-time {
 	font-size: 10px;
-	margin-bottom: 1px;
+	padding-bottom: 1px;
 }
 
 .comments li:nth-child(even){
@@ -336,22 +351,35 @@ htlm, body
     color: orange;
 }
 
+.search-bar {
+  padding-left: 50px;
+}
+
+.search-bar {
+  padding-top: 50px;
+}
+
+.search-bar input[type=text] {
+  max-width: 350px;
+}
+
+.search-bar button {
+  max-width: 30px;
+}
+
 .main-title {
-	margin: 50px;
-  margin-top: 20px;
-	margin-bottom: 20px;
-  padding-left: 0px;
+  padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .secondary-title {
-  margin: 50px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .all-files-table {
-	margin-left: 50px;
-	margin-bottom: 50px;
+	padding-left: 50px;
+	padding-bottom: 50px;
 	border: 3px solid;
 	border-collapse: collapse;
 }
@@ -388,22 +416,6 @@ htlm, body
     background:#ddd;
 }
 
-.search-bar {
-  margin-left: 35px;
-}
-
-.search-bar {
-  margin-top: 50px;
-}
-
-.search-bar input[type=text] {
-  max-width: 570px;
-}
-
-.search-bar button {
-  max-width: 30px;
-}
-
 .user-files-table tbody {
   display: block;
   height: 250px;
@@ -412,7 +424,6 @@ htlm, body
   overflow-y: auto;
   overflow-x: hidden;
 }
-
 
 .user-files-table td {
   border: 1px solid gray;
@@ -423,7 +434,7 @@ htlm, body
 }
 
 .user-files-table tr:nth-child(odd){
-    background:#ddd;
+  background:#ddd;
 }
 
 .user-files-table .file-actions {
