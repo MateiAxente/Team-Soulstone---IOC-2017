@@ -142,8 +142,10 @@ button {
     right: 200px;
   }
 }
-.friend {
+.friend td{
   background-color:transparent;
+  border-style: none;
+  padding: 0px 0px 0px 0px;
 }
 {
     -webkit-border-radius: 0px  !important;
