@@ -453,3 +453,13 @@ htlm, body
 a {
   cursor: pointer;
 }
+
+.allDocsBox {
+  border: 1px solid rgba(0,0,0,0.25);
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.panel-default > .panel-heading-active {
+  background-color: #4b67a8;
+}
