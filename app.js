@@ -59,19 +59,43 @@ app.use( bodyParser.json() )
 app.use( session( {secret: process.env.SESSION_SECRET, resave: false, saveUninitialized:false} ) )
 
 app.get('/updateProfile', function(req, res) {
-  res.render('update_profile')
+  if(req.session.username)
+    res.render('update_profile', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/uploadDocument', function(req, res) {
-  res.render('upload_document')
+  if(req.session.username)
+    res.render('upload_document', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/document', function(req, res) {
-  res.render('document_page')
+  if(req.session.username)
+    res.render('document_page')
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/chat', function(req, res) {
-  res.render('chat')
+  if(req.session.username)
+    res.render('chat')
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.post('/register', function(req, res) {
@@ -149,8 +173,19 @@ app.post('/login', function(req, res) {
   })
 })
 
+app.post('/logout', function(req, res) {
+  req.session.destroy()
+  res.redirect("/")
+})
+
 app.get('/mainPage', function(req, res) {
-  res.render('main_page', {username: req.session.username})
+  if(req.session.username)
+    res.render('main_page', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/', function(req, res){

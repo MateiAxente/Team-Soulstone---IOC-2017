@@ -12,6 +12,10 @@ html
 		h1.LoginHeader
 			| Welcome to ACS Peek
 		.container-fluid
+			if validation == 3
+				.row
+					.cols-xs-12
+						.alert.alert-danger #{error}
 			.row
 				.col-lg-6.col-md-6.col-sm-12.col-xs-12
 					#firstColumn.containerClass
