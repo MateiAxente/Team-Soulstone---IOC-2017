@@ -149,6 +149,43 @@ app.post('/login', function(req, res) {
   })
 })
 
+app.post('/update-profile', function(req, res) {
+  console.log("Tst")
+  var info = {}
+  if(req.body.name) {
+    info.name = req.body.name
+  }
+  if(req.body.profile_picture) {
+    info.profile_picture = req.body.profile_picture
+  }
+  if(req.body.email) {
+    info.email = req.body.email
+  }
+  if(req.body.faculty) {
+    info.faculty = req.body.faculty
+  }
+  if(req.body.spec) {
+    info.spec = req.body.spec
+  }
+  if(req.body.group) {
+    info.group = req.body.group
+  }
+  knex.select('*').from('users').where({'username': req.session.username}).then(function(user){
+    if(user.length == 0 ) {
+      console.log("User not found")
+      req.session.validation = 3
+      req.session.error = "No user with that username!"
+      res.redirect('/')
+    } else {
+      knex("users").where({"username": req.session.username}).update(info).then(function(user){
+        console.log("Updated document")
+        res.redirect('/mainPage')
+      })
+    }
+  })
+
+})
+
 app.get('/mainPage', function(req, res) {
   res.render('main_page', {username: req.session.username})
 })
