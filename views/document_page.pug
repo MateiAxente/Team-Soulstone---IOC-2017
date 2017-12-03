@@ -2,12 +2,11 @@ doctype html
 html
 	include head.pug
 	include template.pug
-		.row
+		.row.doc_page
 			img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
 			.col-xs-1.divider
 			.col-xs-4
-				h1
-					| Titlu document
+				h1.doc_name Titlu document
 				table.file-details(width='100%')
 					tr(style='background-color: black;')
 						th Size
@@ -18,12 +17,12 @@ html
 						td Ion Ion
 						td Subiect examen
 				a
-					h4
+					h4.doc_download
 						u Download this document
-		.row
+		.row.doc_page
 			textarea.col-xs-8.doc-descr(disabled='', rows='5')
 				| ASSSSSSSSSsssdoshgdfubbbbbbbbbbbbbbbbbbbshreiharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-		.row
+		.row.doc_page
 			.col-xs-3.rating(style='background: #ddd; border: 3px solid;')
 				h4 Rate this document:
 				span.fa.fa-star.checked
@@ -32,7 +31,7 @@ html
 				span.fa.fa-star
 				span.fa.fa-star
 				p 3.1 average based on 254 reviews.
-		.row
+		.row.doc_page
 			ul.col-xs-8.comments
 				li
 					h5

@@ -15,7 +15,19 @@ html
 			.row
 				.col-lg-6.col-md-6.col-sm-12.col-xs-12
 					#firstColumn.containerClass
-						| Text static in loc de text dinamic.
+						| Cine suntem?
+						br
+						| Un grup de studenti din poli care vor sa incurajeze colaborarea studentilor pentru dobandirea a noi cunostinte si fixarea celor deja stiute.
+						br
+						br
+						| Cum ma pot alatura?
+						br
+						| Alegi un username, pui o parola pe masura si esti binevenit.
+						br
+						br
+						| Cum functioneaza?
+						br
+						| Cauti materiale si, dupa ce le folosesti, le dai o nota insotita eventual de un comentariu. Contribuie prin opinia ta si vei putea incarca propriile documente.
 				#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
 					.containerClass
 						if validation == 0
@@ -58,9 +70,9 @@ html
 							.alert.alert-danger #{error}
 						form#loginForm(method="post" action="login")
 							label
-								b Username
+								b Username*
 							input(type='text', required='required', id="username", name="username")
 							label
-								b Parola
+								b Parola*
 							input(type='password', required='required', id="pass", name="pass")
 							button(type='submit') Conectare
