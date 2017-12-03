@@ -3,84 +3,82 @@ html
 	include head.pug
 	script.
 		$(window).resize(function() {
-		var path = $(this);
-		var contW = path.width();
-		if(contW >= 751){
-		document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
-		}else{
-		document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
-		}
+			var path = $(this);
+			var contW = path.width();
+			if(contW >= 751){
+				document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
+			}else{
+				document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
+			}
 		});
 		$(document).ready(function() {
-		$('.dropdown').on('show.bs.dropdown', function(e){
-		$(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-		});
-		$('.dropdown').on('hide.bs.dropdown', function(e){
-		$(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
-		});
-		$("#menu-toggle").click(function(e) {
-		e.preventDefault();
-		var elem = document.getElementById("sidebar-wrapper");
-		right = window.getComputedStyle(elem,null).getPropertyValue("right");
-		if(right == "200px"){
-		document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
-		}
-		else if(right == "-200px"){
-		document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
-		}
-		});
+			$('.dropdown').on('show.bs.dropdown', function(e){
+				$(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+			});
+			$('.dropdown').on('hide.bs.dropdown', function(e){
+				$(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
+			});
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				var elem = document.getElementById("sidebar-wrapper");
+				right = window.getComputedStyle(elem,null).getPropertyValue("right");
+				if(right == "200px"){
+					document.getElementsByClassName("sidebar-toggle")[0].style.right="-200px";
+				}
+				else if(right == "-200px"){
+					document.getElementsByClassName("sidebar-toggle")[0].style.right="200px";
+				}
+			});
 		});
 		$(function(){
-		$(".panel.panel-chat > .panel-heading > .chatMinimize").click(function(){
-		if($(this).parent().parent().hasClass('mini'))
-		{
-		$(this).parent().parent().removeClass('mini').addClass('normal');
-		$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-		$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-		}
-		else
-		{
-		$(this).parent().parent().removeClass('normal').addClass('mini');
-		$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-		$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
-		setTimeout(function() {
-		$('.panel.panel-chat > .panel-body').hide();
-		$('.panel.panel-chat > .panel-footer').hide();
-		}, 500);
-		}
-		});
-		$(".panel.panel-chat > .panel-heading > .chatClose").click(function(){
-		console.log($(this).parent().parent());
-		$(this).parent().parent().hide();
-		});
-		$('a[href="#item1"]').on('click', function() {
-		if($('.panel').is(":visible")){
-		if($('.panel.panel-chat').hasClass('mini')) {
-		$('.panel.panel-chat').removeClass('mini').addClass('normal');
-		$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-		$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-		}
-		else {
-		$('.panel.panel-chat').removeClass('normal').addClass('mini');
-		$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-		$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
-		setTimeout(function() {
-		$('.panel.panel-chat > .panel-body').hide();
-		$('.panel.panel-chat > .panel-footer').hide();
-		}, 500);
-		}
-		}
-		else {
-		$('.panel').show();
-		}
-		})
+			$(".panel.panel-chat > .panel-heading > .chatMinimize").click(function(){
+				if($(this).parent().parent().hasClass('mini')){
+					$(this).parent().parent().removeClass('mini').addClass('normal');
+					$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
+					$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
+				}
+				else {
+					$(this).parent().parent().removeClass('normal').addClass('mini');
+					$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
+					$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
+					setTimeout(function() {
+					$('.panel.panel-chat > .panel-body').hide();
+					$('.panel.panel-chat > .panel-footer').hide();
+					}, 500);
+				}
+			});
+			$(".panel.panel-chat > .panel-heading > .chatClose").click(function(){
+				console.log($(this).parent().parent());
+				$(this).parent().parent().hide();
+			});
+			$('.sidebar-nav li a').on('click', function() {
+				if($('.panel').is(":visible")){
+					if($('.panel.panel-chat').hasClass('mini')) {
+						$('.panel.panel-chat').removeClass('mini').addClass('normal');
+						$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
+						$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
+					}
+					else {
+						$('.panel.panel-chat').removeClass('normal').addClass('mini');
+						$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
+						$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
+						setTimeout(function() {
+						$('.panel.panel-chat > .panel-body').hide();
+						$('.panel.panel-chat > .panel-footer').hide();
+						}, 500);
+					}
+				}
+				else {
+					$('.panel').show();
+				}
+			});
+			$('a[href="#item1"]').on('click', function() {
+				console.log("identify each friend");
+			})
 		})
 	include template.pug
-		nav.navbar.navbar-fixed-bottom(role='navigation')
+		nav.navbar.navbar-fixed-top(role='navigation')
 			.container
-				.navbar-header
-					a#menu-toggle.navbar-toggle(href='#')
-						span Chat
 				#sidebar-wrapper.sidebar-toggle
 					ul.sidebar-nav
 						li
@@ -90,7 +88,7 @@ html
 										td(style='width: 20%')
 											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
 										td
-											h5 Name Surname
+											h5 Friend 1
 						li
 							a(href='#item2')
 								table
@@ -98,9 +96,15 @@ html
 										td(style='width: 20%')
 											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
 										td
-											h5 Name Surname
-						table
-							tr(style='height:10000px;')
+											h5 Friend 2
+						li
+							a(href='#item3')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 3
 						li
 							a(href='#item4')
 								table
@@ -108,10 +112,50 @@ html
 										td(style='width: 20%')
 											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
 										td
-											h5 Name Surname
+											h5 Friend 4
+						li
+							a(href='#item5')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 5
+						li
+							a(href='#item6')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 6
+						li
+							a(href='#item7')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 7
+						li
+							a(href='#item8')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 8
+						li
+							a(href='#item9')
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 Friend 9
 		.container
 			.row
-				.panel.panel-chat
+				.panel.panel-chat.normal
 					.panel-heading
 						a.chatMinimize(href='#', onclick='return false')
 							span Proiect IOC
@@ -121,11 +165,11 @@ html
 					.panel-body
 						.messageMe
 							img(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png', alt='')
-							span bla
+							span Buna
 							.clearFix
 						.messageHer
 							img(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png', alt='')
-							span bla back
+							span Hei
 							.clearFix
 					.panel-footer
 						textarea(name='textMessage', cols='0', rows='0')
