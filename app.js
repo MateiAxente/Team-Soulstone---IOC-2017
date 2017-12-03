@@ -207,6 +207,7 @@ app.post('/update-profile', function(req, res) {
       })
     }
   })
+})
 
 app.post('/logout', function(req, res) {
   req.session.destroy()
