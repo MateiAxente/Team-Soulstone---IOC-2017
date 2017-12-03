@@ -98,6 +98,10 @@ app.get('/chat', function(req, res) {
   }
 })
 
+app.get('/allDocuments', function(req, res) {
+  res.render('all_documents')
+})
+
 app.post('/register', function(req, res) {
   var email = req.body.email
   var password = req.body.pass
