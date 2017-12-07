@@ -24,7 +24,7 @@ html
 								span.glyphicon.glyphicon-wrench
 								|  Setari
 						li
-							a(href='#')
+							a(href='/go-all-documents')
 								span.glyphicon.glyphicon-file
 								|  Documente
 						li
@@ -37,10 +37,11 @@ html
 					.profile-username
 						| Ion Ion
 						br
-						a.profile-edit(href='#') Edit profile
+						a.profile-edit(href='/go-edit-profile') Edit profile
 					.profile-option
-						span.glyphicon.glyphicon-paperclip
-						|  Upload Documents
+						a.href-no-style(href='/go-upload-documents')
+							span.glyphicon.glyphicon-paperclip
+							|  Upload Documents
 					.profile-option
 						span.glyphicon.glyphicon-star
 						|  Rate Users
