@@ -12,12 +12,12 @@ html
         .container
             div.pre-scrollable.allDocsBox.col-xs-8
                 #accordion.panel.panel-group
-                    each doc in user_documents
+                    each doc,index in user_documents
                         .panel.panel-default
                             .brown.panel-heading
                                 h4.panel-title
-                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_1') #{doc.title}
-                            #col_1.panel-collapse.collapse
+                                    a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_' + index + '') #{doc.title}
+                            div.panel-collapse.collapse(id="col_" + index + "")
                                 .panel-body
                                     img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
                                     p Document description:
