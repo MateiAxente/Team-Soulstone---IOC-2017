@@ -96,6 +96,8 @@ app.get('/chat', function(req, res) {
     req.session.error = "You must login to access this feature."
     res.redirect("/")
   }
+
+// Random stuff
 })
 
 app.get('/allDocuments', function(req, res) {
@@ -105,6 +107,8 @@ app.get('/allDocuments', function(req, res) {
 app.get('/allDocuments', function(req, res) {
   res.render('all_documents')
 })
+
+//Random stuff end
 
 app.post('/register', function(req, res) {
   var email = req.body.email
