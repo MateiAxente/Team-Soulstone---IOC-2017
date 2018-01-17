@@ -188,10 +188,8 @@ app.post('/message/:uid1/:uid2', function(req, res) {
   }
   pool.query( 'INSERT INTO `chats` SET ?', to_insert ,function(error, results, fields){
     console.log('inserted message')
-    console.log(error)
-    console.log(results)
+    res.redirect('/chat')
   })
-  res.redirect('/chat')
 })
 
 app.get('/allDocuments', function(req, res) {

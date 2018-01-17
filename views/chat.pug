@@ -56,25 +56,7 @@ html
 			})
 		})
 		function show_info($uid2, $uid1, $username, $message, $message2) {
-			if($('.panel').is(":visible")){
-				if($('.panel.panel-chat').hasClass('mini')) {
-					$('.panel.panel-chat').removeClass('mini').addClass('normal');
-					$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-					$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-				}
-				else {
-					$('.panel.panel-chat').removeClass('normal').addClass('mini');
-					$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-					$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
-					setTimeout(function() {
-					$('.panel.panel-chat > .panel-body').hide();
-					$('.panel.panel-chat > .panel-footer').hide();
-					}, 500);
-				}
-			}
-			else {
-				$('.panel').show();
-			}
+			$('.panel').show();
 			$('a.chatMinimize').text($username);
 			if($message2 == 'null')
 				$('.messageHer span').text('');
@@ -118,7 +100,7 @@ html
 												h5 #{user.username}
 		.container
 			.row
-				.panel.panel-chat.normal
+				.panel.panel-chat.normal(style="display:none;")
 					.panel-heading
 						a.chatMinimize(href='#', onclick='return false')
 							span Chat Box
