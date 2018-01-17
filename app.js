@@ -96,8 +96,6 @@ app.get('/chat', function(req, res) {
     req.session.error = "You must login to access this feature."
     res.redirect("/")
   }
-<<<<<<< HEAD
-=======
 })
 
 app.get('/allDocuments', function(req, res) {
@@ -106,7 +104,6 @@ app.get('/allDocuments', function(req, res) {
 
 app.get('/allDocuments', function(req, res) {
   res.render('all_documents')
->>>>>>> 1816753726561aa505515458b9fe6054f7fc6863
 })
 
 app.post('/register', function(req, res) {
