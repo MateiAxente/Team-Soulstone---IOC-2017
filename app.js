@@ -187,15 +187,14 @@ app.post('/login', function(req, res) {
     if(user.length >= 1) {
       console.log("Found user")
       req.session.validation = 1
-
-      req.session.username = req.body.username
-      req.session.email = req.body.email
-      req.session.profile_picture = req.body.profile_picture
-      req.session.name = req.body.name
-      req.session.description = req.body.description
-      req.session.group = req.body.group
-      req.session.spec = req.body.spec
-      req.session.faculty = req.body.faculty
+      req.session.username = user[0].username
+      req.session.email = user[0].email
+      req.session.profile_picture = user[0].profile_picture
+      req.session.name = user[0].name
+      req.session.description = user[0].description
+      req.session.group = user[0].group
+      req.session.spec = user[0].spec
+      req.session.faculty = user[0].faculty
     } else {
       req.session.validation = 2
       req.session.error = "No user with this credentials! Please reenter login informations."
@@ -213,21 +212,27 @@ app.post('/update-profile', function(req, res) {
   var info = {}
   if(req.body.name) {
     info.name = req.body.name
+    req.session.name = req.body.name
   }
   if(req.body.profile_picture) {
     info.profile_picture = req.body.profile_picture
+    req.session.profile_picture = req.body.profile_picture
   }
   if(req.body.email) {
     info.email = req.body.email
+    req.session.email = req.body.email
   }
   if(req.body.faculty) {
     info.faculty = req.body.faculty
+    req.session.faculty = req.body.faculty
   }
   if(req.body.spec) {
     info.spec = req.body.spec
+    req.session.spec = req.body.spec
   }
   if(req.body.group) {
     info.group = req.body.group
+    req.session.group = req.body.group
   }
   knex.select('*').from('users').where({'username': req.session.username}).then(function(user){
     if(user.length == 0 ) {
