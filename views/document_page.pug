@@ -1,6 +1,16 @@
 doctype html
 html
+	script.
+		function send_comment() {
+			alert(document.getElementById("comment_input").value)
+		}
 	include head.pug
+	script.
+		function rateFunction() {
+			rate = $('#RatingButtons input:checked').val()
+			alert(rate);
+			//$('#RatingButtons).submit();
+		}
 	include template.pug
 		.row.doc_page
 			img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
@@ -20,8 +30,10 @@ html
 					h4.doc_download
 						u Download this document
 		.row.doc_page
-			textarea.col-xs-8.doc-descr(disabled='', rows='5')
-				| ASSSSSSSSSsssdoshgdfubbbbbbbbbbbbbbbbbbbshreiharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+			form#commentForm(onsubmit="send_comment()")
+				textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
+				button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite
+
 		.row.doc_page
 			.col-xs-3.rating(style='background: #ddd; border: 3px solid;')
 				h4 Rate this document:
@@ -30,6 +42,17 @@ html
 				span.fa.fa-star.checked
 				span.fa.fa-star
 				span.fa.fa-star
+				form(onchange="rateFunction()" id='RatingButtons')
+					input(type='radio' name='rate' value='1')
+					| 1 
+					input(type='radio' name='rate' value='2')
+					| 2 
+					input(type='radio' name='rate' value='3')
+					| 3 
+					input(type='radio' name='rate' value='4')
+					| 4 
+					input(type='radio' name='rate' value='5')
+					| 5 
 				p 3.1 average based on 254 reviews.
 		.row.doc_page
 			ul.col-xs-8.comments

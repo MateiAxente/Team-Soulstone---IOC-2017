@@ -60,7 +60,7 @@ app.use( session( {secret: process.env.SESSION_SECRET, resave: false, saveUninit
 
 app.get('/updateProfile', function(req, res) {
   if(req.session.username)
-    res.render('update_profile', {username: req.session.username})
+    res.render('update_profile', {username: req.session.username, profile_picture: req.session.profile_picture})
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
@@ -70,7 +70,7 @@ app.get('/updateProfile', function(req, res) {
 
 app.get('/uploadDocument', function(req, res) {
   if(req.session.username)
-    res.render('upload_document', {username: req.session.username})
+    res.render('upload_document', {username: req.session.username, profile_picture: req.session.profile_picture})
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
@@ -80,7 +80,7 @@ app.get('/uploadDocument', function(req, res) {
 
 app.get('/document', function(req, res) {
   if(req.session.username)
-    res.render('document_page')
+    res.render('document_page', {username: req.session.username, profile_picture: req.session.profile_picture})
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
@@ -90,7 +90,7 @@ app.get('/document', function(req, res) {
 
 app.get('/chat', function(req, res) {
   if(req.session.username)
-    res.render('chat')
+    res.render('chat', {username: req.session.username, profile_picture: req.session.profile_picture})
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
@@ -101,11 +101,7 @@ app.get('/chat', function(req, res) {
 })
 
 app.get('/allDocuments', function(req, res) {
-  res.render('all_documents')
-})
-
-app.get('/allDocuments', function(req, res) {
-  res.render('all_documents')
+  res.render('all_documents', {username: req.session.username, profile_picture: req.session.profile_picture})
 })
 
 //Random stuff end
@@ -156,6 +152,7 @@ app.post('/register', function(req, res) {
     }
   })
 })
+
 
 app.post('/login', function(req, res) {
   var password = req.body.pass
@@ -236,9 +233,14 @@ app.get('/go-upload-documents', function(req, res) {
   res.redirect("/uploadDocument")
 })
 
-// redirect template -> upload documents
+// redirect template -> all documents
 app.get('/go-all-documents', function(req, res) {
   res.redirect("/allDocuments")
+})
+
+// redirect template -> chat
+app.get('/go-chat', function(req, res) {
+  res.redirect("/chat")
 })
 
 app.post('/logout', function(req, res) {
@@ -248,7 +250,7 @@ app.post('/logout', function(req, res) {
 
 app.get('/mainPage', function(req, res) {
   if(req.session.username)
-    res.render('main_page', {username: req.session.username})
+    res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture})
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
