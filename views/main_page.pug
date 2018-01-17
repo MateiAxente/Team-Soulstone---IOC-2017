@@ -1,6 +1,11 @@
 doctype html
 html
 	include head.pug
+	script.
+		function toggleActions(id) {
+			console.log('toggle ' + id);
+			$('#' + id).toggle();
+		}
 	include template.pug
 		.row
 			.col-xs-6.search-bar
@@ -27,86 +32,100 @@ html
 						td IOC - Curs I
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs II
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs III
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs IV
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs V
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs VI
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs VII
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs VIII
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs IX
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs X
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs XI
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 					tr
 						td IOC - Curs XII
 						td infinite
 						td Trausan-Matu
-						td bullshit
+						td Curs
 			.col-xs-1
 			table.col-xs-3.user-files-table
 				tbody
 					tr
-						td Curs 2 IA
+						td(onClick='toggleActions(1)') Curs 2 IA
+							#1
+								br
+								a
+									u Edit document
+								br
+								br
+								a
+									u Share with friends
 					tr
-						td.file-actions
-							a
-								u Edit document
-							br
-							br
-							a
-								u Share with friends
-					tr
-						td Laboratoare AA
+						td(onClick='toggleActions(2)') Laboratoare AA
+							#2
+								br
+								a
+									u Edit document
+								br
+								br
+								a
+									u Share with friends
 					tr
 						td Seminar PP
 					tr
-						td Date Examen 335CC
+						td Date Examen 331 CC
 					tr
-						td Date Examen 335CC
+						td Date Examen 332 CC
 					tr
-						td Date Examen 335CC
+						td Date Examen 333 CC
 					tr
-						td Date Examen 335CC
+						td Date Examen 334 CC
 					tr
-						td Date Examen 335CC
+						td Date Examen 335 CC
+
+	script(type="text/javascript").
+		$(function () {
+			toggleActions(1);
+			toggleActions(2);
+		})
