@@ -6,7 +6,7 @@ html
 			.col-lg-3.col-md-3.col-sm-3.col-xs-3
 			.col-lg-6.col-md-6.col-sm-6.col-xs-6.doc-form
 				h1.doc-form-title Upload Document
-				form(method='POST' action='/upload-document')
+				form(method='POST' action='/upload-document' enctype="multipart/form-data")
 					div.form-group
 						label(for='document') Document:
 						input#document.form-control(type='file', placeholder='document' name='document')
@@ -16,5 +16,11 @@ html
 					div.form-group
 						label(for='description') Descriere:
 						input#description.form-control(type='text' placeholder='description' name='description')
+					div.form-group
+						label(for='size') Dimensiune in MB:
+						input#size.form-control(type='text' placeholder='size' name='size')
+					div.form-group
+						label(for='type') Tip Document:
+						input#type.form-control(type='text' placeholder='type' name='type')
 					button.btn.btn-primary.doc-upload-button(type='submit') Upload Document
 			.col-lg-3.col-md-3.col-sm-3.col-xs-3
