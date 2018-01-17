@@ -147,7 +147,33 @@ app.get('/chat', function(req, res) {
 })
 
 app.get('/allDocuments', function(req, res) {
-  res.render('all_documents', {username: req.session.username, profile_picture: req.session.profile_picture})
+  knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+    var uid = user[0].id
+    console.log('User id is: ' + uid)
+
+    knex.select('*').from('documents').orderBy('id', 'desc').where('uid', uid).then(function (user_docs) {
+      var my_docs = user_docs
+      console.log('USER DOCS')
+      console.log(my_docs)
+  
+      res.render('all_documents', {username: req.session.username, profile_picture: req.session.profile_picture, user_documents: user_docs})
+    })
+  })
+})
+
+app.get('/allDocuments/:uid', function(req, res) {
+  knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+    var uid = user[0].id
+    console.log('User id is: ' + uid)
+
+    knex.select('*').from('documents').orderBy('id', 'desc').where('uid', req.params.uid).then(function (user_docs) {
+      var my_docs = user_docs
+      console.log('USER DOCS')
+      console.log(my_docs)
+  
+      res.render('all_documents', {username: req.session.username, profile_picture: req.session.profile_picture, user_documents: user_docs})
+    })
+  })
 })
 
 //Random stuff end
@@ -269,6 +295,22 @@ app.post('/update-profile', function(req, res) {
   })
 })
 
+app.get('/go-main-page', function(req, res) {
+  res.redirect("/mainPage")
+})
+
+app.get('/go-courses', function(req, res) {
+  res.redirect("/mainPage/curs")
+})
+
+app.get('/go-labs-sems', function(req, res) {
+  res.redirect("/mainPage/labs-sems")
+})
+
+app.get('/go-exams', function(req, res) {
+  res.redirect("/mainPage/subiect")
+})
+
 // redirect allDocuments -> document
 app.get('/doc-view-info', function(req, res) {
   res.redirect("/document")
@@ -300,8 +342,72 @@ app.post('/logout', function(req, res) {
 })
 
 app.get('/mainPage', function(req, res) {
-  if(req.session.username)
-    res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture})
+  if(req.session.username) {
+    knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+      var uid = user[0].id
+      console.log('User id is: ' + uid)
+
+      knex.select('*').from('documents').orderBy('id', 'desc').then(function (docs) {
+        var all_docs = docs
+        console.log('DOCS')
+        console.log(all_docs)
+
+        knex.select('*').from('documents').orderBy('id', 'desc').limit(10).where('uid', uid).then(function (user_docs) {
+          var my_docs = user_docs
+          console.log('USER DOCS')
+          console.log(my_docs)
+
+          res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, all_documents: all_docs, user_documents: user_docs})
+        })
+      })
+    })
+  }
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
+})
+
+app.get('/mainPage/:type', function(req, res) {
+  console.log('here ')
+  console.log(req.params.type)
+
+  if(req.session.username) {
+    knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+      var uid = user[0].id
+      console.log('User id is: ' + uid)
+      
+      if(req.params.type == 'labs-sems')
+        knex.select('*').from('documents').orderBy('id', 'desc').where('type', 'laborator').orWhere('type', 'seminar').then(function (docs) {
+          var all_docs = docs
+          console.log('DOCS')
+          console.log(all_docs)
+
+          knex.select('*').from('documents').orderBy('id', 'desc').limit(10).where('uid', uid).then(function (user_docs) {
+            var my_docs = user_docs
+            console.log('USER DOCS')
+            console.log(my_docs)
+
+            res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, all_documents: all_docs, user_documents: user_docs})
+          })
+        })
+      else
+        knex.select('*').from('documents').orderBy('id', 'desc').where('type', req.params.type).then(function (docs) {
+          var all_docs = docs
+          console.log('DOCS')
+          console.log(all_docs)
+
+          knex.select('*').from('documents').orderBy('id', 'desc').limit(10).where('uid', uid).then(function (user_docs) {
+            var my_docs = user_docs
+            console.log('USER DOCS')
+            console.log(my_docs)
+
+            res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, all_documents: all_docs, user_documents: user_docs})
+          })
+        })
+    })
+  }
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
