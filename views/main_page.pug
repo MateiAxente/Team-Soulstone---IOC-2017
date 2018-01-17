@@ -9,7 +9,7 @@ html
 	include template.pug
 		.row
 			.col-xs-6.search-bar
-				form(onsubmit="do_search()")
+				form#searchForm(onsubmit="do_search()")
 					input(type="text", placeholder="Search..", id="search_input" name="search")
 				//button(type="submit")
 					i.fa.fa-search

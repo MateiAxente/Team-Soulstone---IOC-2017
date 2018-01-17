@@ -296,6 +296,14 @@ htlm, body
   padding-bottom: 20px;
 }
 
+#sendCommentButton {
+  position: relative;
+  top: 0px;
+  background-color: #4b67a8;
+  color:#FFF;
+  font-weight: bold;
+}
+
 .doc_name {
   padding-top: 10px;
   padding-bottom: 20px;

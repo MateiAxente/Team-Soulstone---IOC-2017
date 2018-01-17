@@ -1,5 +1,9 @@
 doctype html
 html
+	script.
+		function send_comment() {
+			alert(document.getElementById("comment_input").value)
+		}
 	include head.pug
 	script.
 		function rateFunction() {
@@ -26,8 +30,10 @@ html
 					h4.doc_download
 						u Download this document
 		.row.doc_page
-			textarea.col-xs-8.doc-descr(disabled='', rows='5')
-				| ASSSSSSSSSsssdoshgdfubbbbbbbbbbbbbbbbbbbshreiharrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+			form#commentForm(onsubmit="send_comment()")
+				textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
+				button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite
+
 		.row.doc_page
 			.col-xs-3.rating(style='background: #ddd; border: 3px solid;')
 				h4 Rate this document:
