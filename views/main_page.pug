@@ -26,7 +26,7 @@ html
 				b All documents
 			.col-xs-1
 			h3.col-xs-3.secondary-title
-				b Your documents
+				b Your recent documents
 		.row(style="padding-left: 50px;")
 			table.col-xs-6.all-files-table
 				thead
@@ -36,142 +36,29 @@ html
 						th Uploader
 						th Type
 				tbody
-					tr
-						td IOC - Curs I
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs II
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs III
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs IV
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs V
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs VI
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs VII
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs VIII
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs IX
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs X
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs XI
-						td infinite
-						td Trausan-Matu
-						td Curs
-					tr
-						td IOC - Curs XII
-						td infinite
-						td Trausan-Matu
-						td Curs
+					each doc in all_documents
+						tr
+							td #{doc.title}
+							td #{doc.size} MB
+							td #{doc.uid}
+							td #{doc.type}
+					else
+						tr
+							td
+								p There are currently no files available.
 			.col-xs-1
 			table.col-xs-3.user-files-table
 				tbody
-					tr
-						td
-							p(onClick='toggleActions(1)') Curs 2 IA
-							#1
-								br
-								a
-									u(onClick='editDocument("Curs 2 IA")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(2)') Laboratoare AA
-							#2
-								br
-								a
-									u(onClick='editDocument("Laboratoare AA")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(3)') Seminar PP
-							#3
-								br
-								a
-									u(onClick='editDocument("Seminar PP")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(4)') Date Examen 331 CC
-							#4
-								br
-								a
-									u(onClick='editDocument("Date Examen 331 CC")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(5)') Date Examen 332 CC
-							#5
-								br
-								a
-									u(onClick='editDocument("Date Examen 332 CC")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(6)') Date Examen 333 CC
-							#6
-								br
-								a
-									u(onClick='editDocument("Date Examen 333 CC")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(7)') Date Examen 334 CC
-							#7
-								br
-								a
-									u(onClick='editDocument("Date Examen 334 CC")') Edit document
-								br
-					tr
-						td
-							p(onClick='toggleActions(8)') Date Examen 335 CC
-							#8
-								br
-								a
-									u(onClick='editDocument("Date Examen 335 CC")') Edit document
-								br
-
-	script(type="text/javascript").
-		$(function () {
-			toggleActions(1);
-			toggleActions(2);
-			toggleActions(3);
-			toggleActions(4);
-			toggleActions(5);
-			toggleActions(6);
-			toggleActions(7);
-			toggleActions(8);
-		})
+					each user_doc in user_documents
+						tr
+							td
+								p(onClick='toggleActions("user_doc.id")') #{user_doc.title}
+								#user_doc.id
+									br
+									a
+										u(onClick='editDocument("user_doc.title")') Edit document
+									br
+					else
+						tr 
+							td
+								p You have not uploaded any files yet.
