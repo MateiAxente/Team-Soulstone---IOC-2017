@@ -153,11 +153,6 @@ app.post('/register', function(req, res) {
   })
 })
 
-// nu merge !!!
-app.post('/sendMessage', function(req, res) {
-  console.log("HERE!!!")
-  console.log(req.body.textMessage)
-})
 
 app.post('/login', function(req, res) {
   var password = req.body.pass
