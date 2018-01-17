@@ -1,0 +1,15 @@
+De facut:
+
+	1) Chat:
+		- Adaugat optiune in meniu pentru chat, sa ne duca la pagina de chat /chat (as pune-o in stanga sub butonul de Rate Users)
+		- Cand se deschide casuta in care se scrie mesajul, sa existe si un buton de SEND, cand se da click pe el se executao functie JS/JQuery care ia mesajul scris in casuta si pur si simplu da o alerta cu el ca sa vedem ca merge. Observatie: Functia nu exista trebuie sa o faceti o sa schieti js-ul in fisierul pug pentru chat, de cautat cum se scrie un script in PUG.
+
+	2) Pagina individuala document /document:
+		- Sub chat sa existe un formular in care sa poti scrie si trimite un formular, la fel dupa ce se da click pe butonul de trimitere se executa un JS/JQuery care da o alerta.
+		- Rating stars, sub el de adaugat un formular cu radio buttons de la 1 la 5 cand se da click la fel o alerta cu valoarea aleasa.
+
+	3) Template - lateral si sus: De facut datele dinamice, in PUG trimit eu username si alte cacaturi, va ajuta Matei cu asta. trebuie sa luati valorile alea si sa inlocuiti textul static (Ex: Ion Ion)
+
+	4) MainPage:
+		- Search, cand se insereaza valoarea si se da enter sa se apeleze o functie care doar da o alerta cu mesajul
+		- Your documents: Cand se da click pe un document sa apara optiunea de Edit (scoate share). Acum apar doar sub primul doc, cand se da click pe al doilea, apar sub al doilea si tot asa. Cand se da click pe optiunea de edit profile apare o alerta cu numele documentului ales.
