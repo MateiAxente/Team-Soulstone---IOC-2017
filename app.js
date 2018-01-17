@@ -311,6 +311,10 @@ app.get('/go-all-documents', function(req, res) {
   res.redirect("/allDocuments")
 })
 
+app.get('/go-all-documents/:uid', function(req, res) {
+  res.redirect("/allDocuments/" + req.params.uid)
+})
+
 // redirect template -> chat
 app.get('/go-chat', function(req, res) {
   res.redirect("/chat")
