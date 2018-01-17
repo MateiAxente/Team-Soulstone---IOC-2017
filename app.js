@@ -16,6 +16,7 @@ var url = require('url')
 
 var mysql = require('mysql')
 var oauth = require('oauth')
+var multer = require('multer')
 //var env = require('./env')
 
 var knex = require('knex')({
@@ -77,6 +78,31 @@ app.get('/uploadDocument', function(req, res) {
     res.redirect("/")
   }
 })
+
+const upload = multer({
+  dest: 'uploads/'
+}); 
+
+app.post('/upload-document', upload.single('document'), (req, res) => {
+  console.log(req.session.username)
+  knex.select('id').from('users').where('username', req.session.username).then(function(user) {
+    var to_insert = {
+      title:req.body.title,
+      size:req.body.size,
+      description:req.body.description,
+      rating:0,
+      path:req.file.filename,
+      comments:'',
+      type:req.body.type,
+      uid: user[0].id
+    }
+    console.log(to_insert)
+    pool.query( 'INSERT INTO `documents` SET ?', to_insert ,function(error, results, fields){
+      console.log('inserted email')
+    })
+    res.redirect('/mainPage');
+  })
+});
 
 app.get('/document', function(req, res) {
   if(req.session.username)
