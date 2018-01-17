@@ -17,7 +17,7 @@ html
 	include template.pug
 		.row
 			.col-xs-6.search-bar
-				form#searchForm(onsubmit="do_search()")
+				form#searchForm(method='POST' action='/search-document')
 					input(type="text", placeholder="Search..", id="search_input" name="search")
 				//button(type="submit")
 					i.fa.fa-search

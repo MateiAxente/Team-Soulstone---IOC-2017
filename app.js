@@ -113,10 +113,31 @@ app.get('/download/:path/:name', function (req, res, next) {
 });
 
 app.post('/search-document', (req, res) => {
-  knex.select('id','title', 'size', 'uid', 'type').from('documents').where('title', req.body.search).then(function(document_val) {
-    console.log(document_val)
-    res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, search_data: document_val})
-  })
+  if(req.session.username) {
+    knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+      var uid = user[0].id
+      console.log('User id is: ' + uid)
+
+      knex.select('*').from('documents').where('title', req.body.search).orderBy('id', 'desc').then(function (docs) {
+        var all_docs = docs
+        console.log('DOCS')
+        console.log(all_docs)
+
+        knex.select('*').from('documents').orderBy('id', 'desc').limit(10).where('uid', uid).then(function (user_docs) {
+          var my_docs = user_docs
+          console.log('USER DOCS')
+          console.log(my_docs)
+
+          res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, all_documents: all_docs, user_documents: user_docs})
+        })
+      })
+    })
+  }
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 });
 
 app.get('/document/:id', function(req, res) {
