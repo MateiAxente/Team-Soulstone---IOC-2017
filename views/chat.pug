@@ -76,6 +76,10 @@ html
 				console.log("identify each friend");
 			})
 		})
+		function sendMessage() {
+			alert(document.getElementById("textMessage").value)
+			return true
+		}
 	include template.pug
 		nav.navbar.navbar-fixed-top(role='navigation')
 			.container
@@ -172,6 +176,6 @@ html
 							span Hei
 							.clearFix
 					.panel-footer
-						form-inline#messageForm(method="post" action="/sendMessage")
-							textarea.col-xs-9(name='textMessage', id='textarea' cols='0', rows='0')
+						form#messageForm(onsubmit="return sendMessage()")
+							textarea.col-xs-9(name='textMessage', id='textMessage' cols='0', rows='0')
 							button.col-xs-3(type='submit', id='sendMsgButton') Trimite
