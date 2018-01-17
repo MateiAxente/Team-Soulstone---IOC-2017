@@ -49,7 +49,8 @@ process.on('exit', function(){
 //app.set('view engine', 'html')
 app.set('view engine', 'pug')
 
-app.use( express.static('public') )
+//app.use( express.static('public') )
+app.use('/public', express.static('public'));
 
 app.use( cookieParser() )
 
@@ -84,14 +85,14 @@ const upload = multer({
 }); 
 
 app.post('/upload-document', upload.single('document'), (req, res) => {
-  console.log(req.session.username)
   knex.select('id').from('users').where('username', req.session.username).then(function(user) {
+    var path = req.file.filename
     var to_insert = {
       title:req.body.title,
       size:req.body.size,
       description:req.body.description,
       rating:0,
-      path:req.file.filename,
+      path:path,
       comments:'',
       type:req.body.type,
       uid: user[0].id
@@ -104,15 +105,34 @@ app.post('/upload-document', upload.single('document'), (req, res) => {
   })
 });
 
-app.get('/document', function(req, res) {
-  if(req.session.username)
-    res.render('document_page', {username: req.session.username, profile_picture: req.session.profile_picture})
+app.get('/download/:path/:name', function (req, res, next) {
+    var fileName = req.params.name
+    var filePath = "uploads/" + req.params.path
+
+    res.download(filePath, fileName);    
+});
+
+app.post('/search-document', (req, res) => {
+  knex.select('id','title', 'size', 'uid', 'type').from('documents').where('title', req.body.search).then(function(document_val) {
+    console.log(document_val)
+    res.render('main_page', {username: req.session.username, profile_picture: req.session.profile_picture, search_data: document_val})
+  })
+});
+
+app.get('/document/:id', function(req, res) {
+  var doc_id = req.params.id
+  if(req.session.username){
+    knex.select('*').from('documents').where('id', doc_id).then(function(doc) {
+      console.log(doc)
+      res.render('document_page', {username: req.session.username, profile_picture: req.session.profile_picture, doc: doc[0]})
+    })
+  }
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
     res.redirect("/")
   }
-})
+});
 
 app.get('/chat', function(req, res) {
   if(req.session.username)

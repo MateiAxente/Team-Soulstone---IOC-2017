@@ -1,10 +1,10 @@
 doctype html
 html
+	include head.pug
 	script.
 		function send_comment() {
 			alert(document.getElementById("comment_input").value)
 		}
-	include head.pug
 	script.
 		function rateFunction() {
 			rate = $('#RatingButtons input:checked').val()
@@ -16,21 +16,21 @@ html
 			img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
 			.col-xs-1.divider
 			.col-xs-4
-				h1.doc_name Titlu document
+				h1.doc_name #{doc.title}
 				table.file-details(width='100%')
 					tr(style='background-color: black;')
 						th Size
 						th Uploader
 						th Type
 					tr
-						td 40 MB
-						td Ion Ion
-						td Subiect examen
+						td #{doc.size} MB
+						td #{doc.uid}
+						td #{doc.type}
 				a
 					h4.doc_download
-						u Download this document
+						a(href= "/download/"+ doc.path + "/" + doc.title ) Download this document
 		.row.doc_page
-			div.col-xs-8.doc-descr Mare descriere a documentului
+			div.col-xs-8.doc-descr #{doc.description}
 		
 		.row.doc_page
 			.col-xs-3.rating(style='background: #ddd; border: 3px solid;')
@@ -51,7 +51,7 @@ html
 					| 4 
 					input(type='radio' name='rate' value='5')
 					| 5 
-				p 3.1 average based on 254 reviews.
+				p #{doc.rating} average based on reviews.
 		.row.doc_page
 			ul.col-xs-8.comments
 				li
