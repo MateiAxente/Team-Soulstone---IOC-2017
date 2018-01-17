@@ -1,0 +1,82 @@
+doctype html
+html
+	include head.pug
+	script.
+		function registerButton() {
+			//send form data to back-end?
+		}
+		function loginButton() {
+			//send form data to back-end?
+		}
+	body
+		h1.LoginHeader
+			| Welcome to ACS Peek
+		.container-fluid
+			if validation == 3
+				.row
+					.cols-xs-12
+						.alert.alert-danger #{error}
+			.row
+				.col-lg-6.col-md-6.col-sm-12.col-xs-12
+					#firstColumn.containerClass
+						| Cine suntem?
+						br
+						| Un grup de studenti din poli care vor sa incurajeze colaborarea studentilor pentru dobandirea a noi cunostinte si fixarea celor deja stiute.
+						br
+						br
+						| Cum ma pot alatura?
+						br
+						| Alegi un username, pui o parola pe masura si esti binevenit.
+						br
+						br
+						| Cum functioneaza?
+						br
+						| Cauti materiale si, dupa ce le folosesti, le dai o nota insotita eventual de un comentariu. Contribuie prin opinia ta si vei putea incarca propriile documente.
+				#secondColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+					.containerClass
+						if validation == 0
+							.alert.alert-danger #{error}
+						form#registerForm(method="post" action="/register")
+							label
+								b Username*
+							input(type="text", required='required', id="username", name="username")
+							label
+								b Email*
+							input(type="text", required="required", id="email", name="email")
+							label
+								b Nume
+							input(type='text', id="name", name="name")
+							label
+								b Parola*
+							input(type='password', required='required', id="pass", name="pass")
+							label
+								b Confirma parola*
+							input(type='password', required='required', id="new_pass", name="new_pass")
+							label
+								b Profile Picture URL
+							input(type="text", id="profile_picture", name="profile_picture")
+							label
+								b Descriere
+							input(type="text", id="description", name="description")
+							label
+								b Facultate*
+							input(type="text", required="required", id="faculty", name="faculty") 
+							label
+								b Specializare*
+							input(type="text", required="required", id="spec", name="spec")
+							label
+								b Grupa*
+							input(type="text", required="required", id="group", name="group")
+							button(type='submit') Inscriere
+				#thirdColumn.col-lg-3.col-md-3.col-sm-6.col-xs-12
+					.containerClass
+						if validation == 2
+							.alert.alert-danger #{error}
+						form#loginForm(method="post" action="login")
+							label
+								b Username*
+							input(type='text', required='required', id="username", name="username")
+							label
+								b Parola*
+							input(type='password', required='required', id="pass", name="pass")
+							button(type='submit') Conectare

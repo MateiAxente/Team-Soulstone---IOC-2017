@@ -1,0 +1,86 @@
+doctype html
+html
+    include head.pug
+    script.
+        $(document).ready(function() {
+            $('.panel-default').on('click', function() {
+                $(this).siblings().find(".panel-heading").removeClass("panel-heading-active");
+                $(this).find(".panel-heading").addClass("panel-heading-active");
+            });
+        });
+    include template.pug
+        .container
+            div.pre-scrollable.allDocsBox.col-xs-8
+                #accordion.panel.panel-group
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_1') Document 1 Name
+                        #col_1.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_2') Document 2 Name
+                        #col_2.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_3') Document 3 Name
+                        #col_3.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_4') Document 4 Name
+                        #col_4.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_5') Document 5 Name
+                        #col_5.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
+                    .panel.panel-default
+                        .brown.panel-heading
+                            h4.panel-title
+                                a.accordion-toggle(data-toggle='collapse', data-parent='#accordion', href='#col_6') Document 6 Name
+                        #col_6.panel-collapse.collapse
+                            .panel-body
+                                img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
+                                p Document description:
+                                p "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem IpsumLorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum"
+                                a(method='GET' href='/doc-view-info')
+                                    h4.doc_download
+                                        u view all info
