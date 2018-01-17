@@ -2,9 +2,12 @@ doctype html
 html
 	script.
 		function do_search() {
-			alert(document.getElementById("search_input").value)
+			alert(document.getElementById("search_input").value);
 		}
 
+		function editDocument(name) {
+			alert(name);
+		}
 	include head.pug
 	script.
 		function toggleActions(id) {
@@ -97,40 +100,78 @@ html
 			table.col-xs-3.user-files-table
 				tbody
 					tr
-						td(onClick='toggleActions(1)') Curs 2 IA
+						td
+							p(onClick='toggleActions(1)') Curs 2 IA
 							#1
 								br
 								a
-									u Edit document
+									u(onClick='editDocument("Curs 2 IA")') Edit document
 								br
-								br
-								a
-									u Share with friends
 					tr
-						td(onClick='toggleActions(2)') Laboratoare AA
+						td
+							p(onClick='toggleActions(2)') Laboratoare AA
 							#2
 								br
 								a
-									u Edit document
+									u(onClick='editDocument("Laboratoare AA")') Edit document
 								br
+					tr
+						td
+							p(onClick='toggleActions(3)') Seminar PP
+							#3
 								br
 								a
-									u Share with friends
+									u(onClick='editDocument("Seminar PP")') Edit document
+								br
 					tr
-						td Seminar PP
+						td
+							p(onClick='toggleActions(4)') Date Examen 331 CC
+							#4
+								br
+								a
+									u(onClick='editDocument("Date Examen 331 CC")') Edit document
+								br
 					tr
-						td Date Examen 331 CC
+						td
+							p(onClick='toggleActions(5)') Date Examen 332 CC
+							#5
+								br
+								a
+									u(onClick='editDocument("Date Examen 332 CC")') Edit document
+								br
 					tr
-						td Date Examen 332 CC
+						td
+							p(onClick='toggleActions(6)') Date Examen 333 CC
+							#6
+								br
+								a
+									u(onClick='editDocument("Date Examen 333 CC")') Edit document
+								br
 					tr
-						td Date Examen 333 CC
+						td
+							p(onClick='toggleActions(7)') Date Examen 334 CC
+							#7
+								br
+								a
+									u(onClick='editDocument("Date Examen 334 CC")') Edit document
+								br
 					tr
-						td Date Examen 334 CC
-					tr
-						td Date Examen 335 CC
+						td
+							p(onClick='toggleActions(8)') Date Examen 335 CC
+							#8
+								br
+								a
+									u(onClick='editDocument("Date Examen 335 CC")') Edit document
+								br
 
 	script(type="text/javascript").
 		$(function () {
 			toggleActions(1);
 			toggleActions(2);
+			toggleActions(3);
+			toggleActions(4);
+			toggleActions(5);
+			toggleActions(6);
+			toggleActions(7);
+			toggleActions(8);
 		})
