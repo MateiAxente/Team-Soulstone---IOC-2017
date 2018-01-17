@@ -1,11 +1,16 @@
 doctype html
 html
+	script.
+		function do_search() {
+			alert(document.getElementById("search_input").value)
+		}
+
 	include head.pug
 	include template.pug
 		.row
 			.col-xs-6.search-bar
-				form
-					input(type="text", placeholder="Search..", name="search")
+				form(onsubmit="do_search()")
+					input(type="text", placeholder="Search..", id="search_input" name="search")
 				//button(type="submit")
 					i.fa.fa-search
 		.row(style="padding-left: 50px;")
