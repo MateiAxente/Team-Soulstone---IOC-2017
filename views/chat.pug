@@ -172,4 +172,6 @@ html
 							span Hei
 							.clearFix
 					.panel-footer
-						textarea(name='textMessage', cols='0', rows='0')
+						form-inline#messageForm(method="post" action="/sendMessage")
+							textarea.col-xs-9(name='textMessage', id='textarea' cols='0', rows='0')
+							button.col-xs-3(type='submit', id='sendMsgButton') Trimite

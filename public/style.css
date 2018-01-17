@@ -272,13 +272,27 @@ htlm, body
     max-height: 55px;
     height: 55px;
 }
-.panel.panel-chat .panel-footer textarea
+.panel.panel-chat .panel-footer #textarea
 {
     margin-bottom: -5px;
     resize: none;
-    width: 100%;
+    padding: 5px;
+    /*width: 100%;*/
     height: 100%;
 }
+
+.panel.panel-chat .panel-footer #sendMsgButton
+{
+    margin-top: -20px;
+    background-color: #4b67a8;
+    resize: none;
+    /*width: 100%;*/
+    height: 100%;
+    color:#FFF;
+    font-weight: bold;
+    padding: 5px;
+}
+
 
 .doc_page {
   padding-left: 50px;

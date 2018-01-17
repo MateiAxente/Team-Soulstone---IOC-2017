@@ -236,9 +236,14 @@ app.get('/go-upload-documents', function(req, res) {
   res.redirect("/uploadDocument")
 })
 
-// redirect template -> upload documents
+// redirect template -> all documents
 app.get('/go-all-documents', function(req, res) {
   res.redirect("/allDocuments")
+})
+
+// redirect template -> chat
+app.get('/go-chat', function(req, res) {
+  res.redirect("/chat")
 })
 
 app.post('/logout', function(req, res) {
