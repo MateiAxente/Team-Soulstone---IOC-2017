@@ -30,10 +30,8 @@ html
 					h4.doc_download
 						u Download this document
 		.row.doc_page
-			form#commentForm(onsubmit="send_comment()")
-				textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
-				button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite
-
+			div.col-xs-8.doc-descr Mare descriere a documentului
+		
 		.row.doc_page
 			.col-xs-3.rating(style='background: #ddd; border: 3px solid;')
 				h4 Rate this document:
@@ -86,3 +84,7 @@ html
 						b Ion Ion
 					p.comm-content Frumos subiectul asta, thanks uploader.
 					p.comm-time Posted at 23:59, 10/02/2018
+		.row.doc_page
+			form#commentForm(onsubmit="send_comment()")
+				textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
+				button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite
