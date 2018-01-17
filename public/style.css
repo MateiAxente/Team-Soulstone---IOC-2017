@@ -463,3 +463,8 @@ a {
 .panel-default > .panel-heading-active {
   background-color: #4b67a8;
 }
+
+.href-no-style, .href-no-style:hover, .href-no-style:visited {
+  color: black;
+  text-decoration: none;
+}

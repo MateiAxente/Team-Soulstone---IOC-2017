@@ -59,24 +59,56 @@ app.use( bodyParser.json() )
 app.use( session( {secret: process.env.SESSION_SECRET, resave: false, saveUninitialized:false} ) )
 
 app.get('/updateProfile', function(req, res) {
-  res.render('update_profile')
+  if(req.session.username)
+    res.render('update_profile', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/uploadDocument', function(req, res) {
-  res.render('upload_document')
+  if(req.session.username)
+    res.render('upload_document', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/document', function(req, res) {
-  res.render('document_page')
+  if(req.session.username)
+    res.render('document_page')
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/chat', function(req, res) {
-  res.render('chat')
+  if(req.session.username)
+    res.render('chat')
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
+
+// Random stuff
 })
 
 app.get('/allDocuments', function(req, res) {
   res.render('all_documents')
 })
+
+app.get('/allDocuments', function(req, res) {
+  res.render('all_documents')
+})
+
+//Random stuff end
 
 app.post('/register', function(req, res) {
   var email = req.body.email
@@ -153,8 +185,75 @@ app.post('/login', function(req, res) {
   })
 })
 
+app.post('/update-profile', function(req, res) {
+  console.log("Tst")
+  var info = {}
+  if(req.body.name) {
+    info.name = req.body.name
+  }
+  if(req.body.profile_picture) {
+    info.profile_picture = req.body.profile_picture
+  }
+  if(req.body.email) {
+    info.email = req.body.email
+  }
+  if(req.body.faculty) {
+    info.faculty = req.body.faculty
+  }
+  if(req.body.spec) {
+    info.spec = req.body.spec
+  }
+  if(req.body.group) {
+    info.group = req.body.group
+  }
+  knex.select('*').from('users').where({'username': req.session.username}).then(function(user){
+    if(user.length == 0 ) {
+      console.log("User not found")
+      req.session.validation = 3
+      req.session.error = "No user with that username!"
+      res.redirect('/')
+    } else {
+      knex("users").where({"username": req.session.username}).update(info).then(function(user){
+        console.log("Updated document")
+        res.redirect('/mainPage')
+      })
+    }
+  })
+})
+
+// redirect allDocuments -> document
+app.get('/doc-view-info', function(req, res) {
+  res.redirect("/document")
+})
+
+// redirect template -> edit profile
+app.get('/go-edit-profile', function(req, res) {
+  res.redirect("/updateProfile")
+})
+
+// redirect template -> upload documents
+app.get('/go-upload-documents', function(req, res) {
+  res.redirect("/uploadDocument")
+})
+
+// redirect template -> upload documents
+app.get('/go-all-documents', function(req, res) {
+  res.redirect("/allDocuments")
+})
+
+app.post('/logout', function(req, res) {
+  req.session.destroy()
+  res.redirect("/")
+})
+
 app.get('/mainPage', function(req, res) {
-  res.render('main_page', {username: req.session.username})
+  if(req.session.username)
+    res.render('main_page', {username: req.session.username})
+  else {
+    req.session.validation = 3
+    req.session.error = "You must login to access this feature."
+    res.redirect("/")
+  }
 })
 
 app.get('/', function(req, res){
