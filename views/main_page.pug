@@ -40,7 +40,8 @@ html
 						tr
 							td #{doc.title}
 							td #{doc.size} MB
-							td #{doc.uid}
+							td
+								a(href='/go-all-documents/' + doc.uid) #{doc.uid}
 							td #{doc.type}
 					else
 						tr
