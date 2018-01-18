@@ -329,6 +329,10 @@ htlm, body
 	padding-bottom: 5px;
 }
 
+.file-details th {
+  color: white;
+}
+
 .doc-descr {
 	resize: none;
 	border: 3px solid;
