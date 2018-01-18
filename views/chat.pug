@@ -75,29 +75,29 @@ html
 			return true
 		}
 	include template.pug
-		nav.navbar.navbar-fixed-top(role='navigation')
-			.container
-				#sidebar-wrapper.sidebar-toggle
-					ul.sidebar-nav
-						each user,index in user_list
-							- var message = "null"
-							- var message2 = "null"
-							each user_mes in user_send
-								if user_mes.uid2 == user.id
-									- message = user_mes.messages
-									- break
-							each user_mes in user_received
-								if user_mes.uid2 == uid
-									- message2 = user_mes.messages
-									- break
-							li
-								a(href='#item' + index + '' onclick="show_info(" + user.id +", " + uid + ", '" + user.username + "', '" + message + "', '" + message2 + "')")
-									table
-										tr.friend
-											td(style='width: 20%')
-												img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-											td
-												h5 #{user.username}
+		
+		.container
+			#sidebar-wrapper.sidebar-toggle
+				ul.sidebar-nav
+					each user,index in user_list
+						- var message = "null"
+						- var message2 = "null"
+						each user_mes in user_send
+							if user_mes.uid2 == user.id
+								- message = user_mes.messages
+								- break
+						each user_mes in user_received
+							if user_mes.uid2 == uid
+								- message2 = user_mes.messages
+								- break
+						li
+							a(href='#item' + index + '' onclick="show_info(" + user.id +", " + uid + ", '" + user.username + "', '" + message + "', '" + message2 + "')")
+								table
+									tr.friend
+										td(style='width: 20%')
+											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+										td
+											h5 #{user.username}
 		.container
 			.row
 				.panel.panel-chat.normal(style="display:none;")
