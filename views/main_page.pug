@@ -1,9 +1,10 @@
 doctype html
 html
+	include head.pug
 	script.
 		function do_search() {
 			alert(document.getElementById("search_input").value);
-		}	include head.pug
+		}
 		
 		function toggleActions(id) {
 			console.log('toggle ' + id);
@@ -50,15 +51,10 @@ html
 						tr
 							td
 								p(onClick='toggleActions(' + user_doc.id + ')') #{user_doc.title}
-								p(id="" + user_doc.id)
+								p(id="" + user_doc.id + "" style="display:none")
 									br
-									a(href='/doc-view-info/' + user_doc.id)
-										u View details
+									a(href='/doc-view-info/' + user_doc.id) View details
 									br
-							script(type='text/javascript').
-								$(function () {
-									toggleActions(#{user_doc.id});
-								})
 					else
 						tr 
 							td
