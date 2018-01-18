@@ -51,31 +51,25 @@ html
 				console.log($(this).parent().parent());
 				$(this).parent().parent().hide();
 			});
-			$('.sidebar-nav li a').on('click', function() {
-				if($('.panel').is(":visible")){
-					if($('.panel.panel-chat').hasClass('mini')) {
-						$('.panel.panel-chat').removeClass('mini').addClass('normal');
-						$('.panel.panel-chat > .panel-body').animate({height: "250px"}, 500).show();
-						$('.panel.panel-chat > .panel-footer').animate({height: "75px"}, 500).show();
-					}
-					else {
-						$('.panel.panel-chat').removeClass('normal').addClass('mini');
-						$('.panel.panel-chat > .panel-body').animate({height: "0"}, 500);
-						$('.panel.panel-chat > .panel-footer').animate({height: "0"}, 500);
-						setTimeout(function() {
-						$('.panel.panel-chat > .panel-body').hide();
-						$('.panel.panel-chat > .panel-footer').hide();
-						}, 500);
-					}
-				}
-				else {
-					$('.panel').show();
-				}
-			});
 			$('a[href="#item1"]').on('click', function() {
 				console.log("identify each friend");
 			})
 		})
+		function show_info($uid2, $uid1, $username, $message, $message2) {
+			$('.panel').show();
+			$('a.chatMinimize').text($username);
+			if($message2 == 'null')
+				$('.messageHer span').text('');
+			else
+				$('.messageHer span').text($message2);
+			if($message == 'null')
+				$('.messageMe span').text('');
+			else
+				$('.messageMe span').text($message);
+			var html_to_add = '<form id="messageForm" action="/message/' + $uid1 + '/' + $uid2 + '" method="POST"> <textarea name="messages" id="messages" cols="0" rows="0" class="col-xs-9"></textarea> <button type="submit" id="sendMsgButton" class="col-xs-3">Trimite</button></form>';
+			$(".panel-footer").html(html_to_add);
+		}
+
 		function sendMessage() {
 			alert(document.getElementById("textMessage").value)
 			return true
@@ -85,97 +79,44 @@ html
 			.container
 				#sidebar-wrapper.sidebar-toggle
 					ul.sidebar-nav
-						li
-							a(href='#item1')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 1
-						li
-							a(href='#item2')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 2
-						li
-							a(href='#item3')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 3
-						li
-							a(href='#item4')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 4
-						li
-							a(href='#item5')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 5
-						li
-							a(href='#item6')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 6
-						li
-							a(href='#item7')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 7
-						li
-							a(href='#item8')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 8
-						li
-							a(href='#item9')
-								table
-									tr.friend
-										td(style='width: 20%')
-											img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
-										td
-											h5 Friend 9
+						each user,index in user_list
+							- var message = "null"
+							- var message2 = "null"
+							each user_mes in user_send
+								if user_mes.uid2 == user.id
+									- message = user_mes.messages
+									- break
+							each user_mes in user_received
+								if user_mes.uid2 == uid
+									- message2 = user_mes.messages
+									- break
+							li
+								a(href='#item' + index + '' onclick="show_info(" + user.id +", " + uid + ", '" + user.username + "', '" + message + "', '" + message2 + "')")
+									table
+										tr.friend
+											td(style='width: 20%')
+												img.pic.img-circle.img-responsive(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png')
+											td
+												h5 #{user.username}
 		.container
 			.row
-				.panel.panel-chat.normal
+				.panel.panel-chat.normal(style="display:none;")
 					.panel-heading
 						a.chatMinimize(href='#', onclick='return false')
-							span Proiect IOC
+							span Chat Box
 						a.chatClose(href='#', onclick='return false')
 							i.glyphicon.glyphicon-remove
 						.clearFix
 					.panel-body
 						.messageMe
 							img(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png', alt='')
-							span Buna
+							span.message Send me a message!
 							.clearFix
 						.messageHer
 							img(src='http://i0.kym-cdn.com/photos/images/original/001/054/924/d3d.png', alt='')
-							span Hei
+							span.message Send me a message!
 							.clearFix
 					.panel-footer
 						form#messageForm(onsubmit="return sendMessage()")
-							textarea.col-xs-9(name='textMessage', id='textMessage' cols='0', rows='0')
+							textarea.col-xs-9(name='messages', id='messages' cols='0', rows='0')
 							button.col-xs-3(type='submit', id='sendMsgButton') Trimite

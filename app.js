@@ -156,15 +156,40 @@ app.get('/document/:id', function(req, res) {
 });
 
 app.get('/chat', function(req, res) {
-  if(req.session.username)
-    res.render('chat', {username: req.session.username, profile_picture: req.session.profile_picture})
+  if(req.session.username) {
+    knex.select('id').from('users').where('username', req.session.username).then(function (user) {
+      var uid = user[0].id
+
+      knex.select('id','username').from('users').orderBy('id', 'desc').where('id', '!=' , uid).then(function (user_list) {
+        var user_list = user_list
+        knex.select('*').from('chats').orderBy('id', 'desc').where('uid1', uid).then(function (user_send) {
+          var user_send = user_send
+          knex.select('*').from('chats').orderBy('id', 'desc').where('uid2', uid).then(function (user_received) {
+            var user_received = user_received
+            
+            res.render('chat', {uid:uid, username: req.session.username, profile_picture: req.session.profile_picture, user_list: user_list, user_send: user_send, user_received: user_received})
+          })
+        })
+      })
+    })
+  }
   else {
     req.session.validation = 3
     req.session.error = "You must login to access this feature."
     res.redirect("/")
   }
+})
 
-// Random stuff
+app.post('/message/:uid1/:uid2', function(req, res) {
+  var to_insert = {
+    uid1:req.params.uid1,
+    uid2:req.params.uid2,
+    messages: req.body.messages
+  }
+  pool.query( 'INSERT INTO `chats` SET ?', to_insert ,function(error, results, fields){
+    console.log('inserted message')
+    res.redirect('/chat')
+  })
 })
 
 app.get('/allDocuments', function(req, res) {
