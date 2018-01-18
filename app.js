@@ -246,6 +246,10 @@ app.post('/register', function(req, res) {
   })
 })
 
+// app.post('/rate', function(req, res) {
+//   res.redirect('/document/' + req.body.id)
+// })
+
 
 app.post('/login', function(req, res) {
   var password = req.body.pass
@@ -335,6 +339,10 @@ app.get('/go-exams', function(req, res) {
 // redirect allDocuments -> document
 app.get('/doc-view-info', function(req, res) {
   res.redirect("/document")
+})
+
+app.get('/doc-view-info/:id', function(req, res) {
+  res.redirect("/document/" + req.params.id)
 })
 
 // redirect template -> edit profile

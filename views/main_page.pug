@@ -3,13 +3,8 @@ html
 	script.
 		function do_search() {
 			alert(document.getElementById("search_input").value);
-		}
-
-		function editDocument(name) {
-			alert(name);
-		}
-	include head.pug
-	script.
+		}	include head.pug
+		
 		function toggleActions(id) {
 			console.log('toggle ' + id);
 			$('#' + id).toggle();
@@ -38,7 +33,8 @@ html
 				tbody
 					each doc in all_documents
 						tr
-							td #{doc.title}
+							td
+								a(href='/doc-view-info/' + doc.id) #{doc.title}
 							td #{doc.size} MB
 							td
 								a(href='/go-all-documents/' + doc.uid) #{doc.uid}
@@ -53,12 +49,16 @@ html
 					each user_doc in user_documents
 						tr
 							td
-								p(onClick='toggleActions("user_doc.id")') #{user_doc.title}
-								#user_doc.id
+								p(onClick='toggleActions(' + user_doc.id + ')') #{user_doc.title}
+								p(id="" + user_doc.id)
 									br
-									a
-										u(onClick='editDocument("user_doc.title")') Edit document
+									a(href='/doc-view-info/' + user_doc.id)
+										u View details
 									br
+							script(type='text/javascript').
+								$(function () {
+									toggleActions(#{user_doc.id});
+								})
 					else
 						tr 
 							td

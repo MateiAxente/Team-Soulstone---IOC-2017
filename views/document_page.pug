@@ -24,7 +24,8 @@ html
 						th Type
 					tr
 						td #{doc.size} MB
-						td #{doc.uid}
+						td 
+							a(href='/go-all-documents/' + doc.uid) #{doc.uid}
 						td #{doc.type}
 				a
 					h4.doc_download
@@ -40,7 +41,7 @@ html
 				span.fa.fa-star.checked
 				span.fa.fa-star
 				span.fa.fa-star
-				form(onchange="rateFunction()" id='RatingButtons')
+				form#rate_form(onchange="rateFunction()" id='RatingButtons')
 					input(type='radio' name='rate' value='1')
 					| 1 
 					input(type='radio' name='rate' value='2')
@@ -52,39 +53,39 @@ html
 					input(type='radio' name='rate' value='5')
 					| 5 
 				p #{doc.rating} average based on reviews.
-		.row.doc_page
-			ul.col-xs-8.comments
-				li
-					h5
-						b Ion Ion
-					p.comm-content Frumos subiectul asta, thanks uploader.
-					p.comm-time Posted at 23:59, 10/02/2018
-				li
-					h5
-						b Dorel #1
-					p.comm-content
-						| Boss de boss
-						br
-						| Haters gonna hate
-						br
-						| H8r Sk8r
-					p.comm-time Posted at 23:59, 10/02/2018
-				li
-					h5
-						b Ion Ion
-					p.comm-content Frumos subiectul asta, thanks uploader.
-					p.comm-time Posted at 23:59, 10/02/2018
-				li
-					h5
-						b Ion Ion
-					p.comm-content Frumos subiectul asta, thanks uploader.
-					p.comm-time Posted at 23:59, 10/02/2018
-				li
-					h5
-						b Ion Ion
-					p.comm-content Frumos subiectul asta, thanks uploader.
-					p.comm-time Posted at 23:59, 10/02/2018
-		.row.doc_page
-			form#commentForm(onsubmit="send_comment()")
-				textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
-				button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite
+		//- .row.doc_page
+		//- 	ul.col-xs-8.comments
+		//- 		li
+		//- 			h5
+		//- 				b Ion Ion
+		//- 			p.comm-content Frumos subiectul asta, thanks uploader.
+		//- 			p.comm-time Posted at 23:59, 10/02/2018
+		//- 		li
+		//- 			h5
+		//- 				b Dorel #1
+		//- 			p.comm-content
+		//- 				| Boss de boss
+		//- 				br
+		//- 				| Haters gonna hate
+		//- 				br
+		//- 				| H8r Sk8r
+		//- 			p.comm-time Posted at 23:59, 10/02/2018
+		//- 		li
+		//- 			h5
+		//- 				b Ion Ion
+		//- 			p.comm-content Frumos subiectul asta, thanks uploader.
+		//- 			p.comm-time Posted at 23:59, 10/02/2018
+		//- 		li
+		//- 			h5
+		//- 				b Ion Ion
+		//- 			p.comm-content Frumos subiectul asta, thanks uploader.
+		//- 			p.comm-time Posted at 23:59, 10/02/2018
+		//- 		li
+		//- 			h5
+		//- 				b Ion Ion
+		//- 			p.comm-content Frumos subiectul asta, thanks uploader.
+		//- 			p.comm-time Posted at 23:59, 10/02/2018
+		//- .row.doc_page
+		//- 	form#commentForm(onsubmit="send_comment()")
+		//- 		textarea.col-xs-8.doc-descr(id="comment_input", rows='5')
+		//- 		button.col-xs-8(type='submit', id='sendCommentButton' cols='5') Trimite

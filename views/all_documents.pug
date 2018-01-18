@@ -22,6 +22,6 @@ html
                                     img.col-xs-3.document-image(src='http://pngimages.net/sites/default/files/document-png-image-54169.png')
                                     p Document description:
                                     p #{doc.description}
-                                    a(method='GET' href='/doc-view-info')
+                                    a(href='/doc-view-info/' + doc.id)
                                         h4.doc_download
-                                            u view all info
+                                            u View all info
